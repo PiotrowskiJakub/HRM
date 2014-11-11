@@ -1,0 +1,9 @@
+F:\NetBeans 8.0.1\platform=1413369230452
+cluster.D:/Studia/5 semestr/Wprowadzenie do wzorców projektowych/Projekt/HRM/HRM/build/cluster=1415719599205
+cluster.F:/NetBeans 8.0.1/platform=1413369230452
+user=1415719599205
+crc=7
+locale=pl_PL
+branding=hrm
+java.version=1.8.0_05
+java.vm.version=25.5-b02
