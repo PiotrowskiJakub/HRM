@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><module codename="com.hrm.configuration">
-    <module_version install_time="1415719599189" last="true" origin="installer" specification_version="1.0">
-        <file crc="4006005101" name="config/Modules/com-hrm-configuration.xml"/>
-        <file crc="3371110533" name="modules/com-hrm-configuration.jar"/>
-    </module_version>
-</module>
