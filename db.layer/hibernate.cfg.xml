@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://mysql.agh.edu.pl:3306/sbatko1?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">sbatko1</property>
+    <property name="hibernate.connection.password">b5N7WftM</property>
+    <mapping class="com.hrm.Leaves"/>
+    <mapping class="com.hrm.TaskPriorities"/>
+    <mapping class="com.hrm.WorkLogs"/>
+    <mapping class="com.hrm.Users"/>
+    <mapping class="com.hrm.Comments"/>
+    <mapping class="com.hrm.LeaveTypes"/>
+    <mapping class="com.hrm.Roles"/>
+    <mapping class="com.hrm.Tasks"/>
+  </session-factory>
+</hibernate-configuration>

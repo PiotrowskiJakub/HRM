@@ -121,6 +121,11 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+            	<groupId>com.hrm</groupId>
+            	<artifactId>db.layer</artifactId>
+            	<version>0.0.1-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

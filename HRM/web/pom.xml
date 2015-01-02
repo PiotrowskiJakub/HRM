@@ -90,6 +90,11 @@
            </exclusions>
        </dependency>
 
+       <dependency>
+       	<groupId>com.hrm</groupId>
+       	<artifactId>db.layer</artifactId>
+       	<scope>provided</scope>
+       </dependency>
    </dependencies>
 
    <build>
