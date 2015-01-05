@@ -95,8 +95,18 @@
        	<artifactId>db.layer</artifactId>
        	<scope>provided</scope>
        </dependency>
+       
+       	<dependency>
+		<groupId>javax</groupId>
+		<artifactId>javaee-api</artifactId>
+		<version>7.0</version>
+		<optional>true</optional>
+	</dependency>
    </dependencies>
+	
 
+	
+	
    <build>
       <finalName>${project.artifactId}</finalName>
       <plugins>
