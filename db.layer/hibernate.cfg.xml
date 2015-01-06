@@ -7,13 +7,15 @@
     <property name="hibernate.connection.url">jdbc:mysql://mysql.agh.edu.pl:3306/sbatko1?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">sbatko1</property>
     <property name="hibernate.connection.password">b5N7WftM</property>
-    <mapping class="com.hrm.db.model.Leaves"/>
-    <mapping class="com.hrm.db.model.TaskPriorities"/>
-    <mapping class="com.hrm.db.model.WorkLogs"/>
-    <mapping class="com.hrm.db.model.Users"/>
-    <mapping class="com.hrm.db.model.Comments"/>
-    <mapping class="com.hrm.db.model.LeaveTypes"/>
-    <mapping class="com.hrm.db.model.Roles"/>
-    <mapping class="com.hrm.db.model.Tasks"/>
+    <mapping class="com.hrm.db.model.Section"/>
+    <mapping class="com.hrm.db.model.TaskPriority"/>
+    <mapping class="com.hrm.db.model.Leave"/>
+    <mapping class="com.hrm.db.model.Task"/>
+    <mapping class="com.hrm.db.model.Role"/>
+    <mapping class="com.hrm.db.model.WorkLog"/>
+    <mapping class="com.hrm.db.model.Project"/>
+    <mapping class="com.hrm.db.model.Comment"/>
+    <mapping class="com.hrm.db.model.LeaveType"/>
+    <mapping class="com.hrm.db.model.User"/>
   </session-factory>
 </hibernate-configuration>

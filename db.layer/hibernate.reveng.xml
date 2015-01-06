@@ -2,12 +2,15 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="sbatko1"/>
-  <table-filter match-name="work_logs"/>
-  <table-filter match-name="comments"/>
-  <table-filter match-name="tasks"/>
-  <table-filter match-name="users"/>
-  <table-filter match-name="leaves"/>
-  <table-filter match-name="leave_types"/>
+  <table-filter match-name="projects"/>
   <table-filter match-name="roles"/>
+  <table-filter match-name="users_projects"/>
+  <table-filter match-name="leaves"/>
+  <table-filter match-name="sections"/>
+  <table-filter match-name="comments"/>
   <table-filter match-name="task_priorities"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="work_logs"/>
+  <table-filter match-name="leave_types"/>
+  <table-filter match-name="tasks"/>
 </hibernate-reverse-engineering>
