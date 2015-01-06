@@ -212,7 +212,7 @@ public class User implements java.io.Serializable
 		this.users = users;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_projects", catalog = "sbatko1", joinColumns = { @JoinColumn(name = "upr_usr_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "upr_prj_id", nullable = false, updatable = false) })
 	public Set<Project> getProjects()
 	{
@@ -246,7 +246,7 @@ public class User implements java.io.Serializable
 		this.leavesForLeaWhoDecided = leavesForLeaWhoDecided;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userByTskUsrWorkerId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userByTskUsrWorkerId")
 	public Set<Task> getTasksForTskUsrWorkerId()
 	{
 		return this.tasksForTskUsrWorkerId;
@@ -257,7 +257,7 @@ public class User implements java.io.Serializable
 		this.tasksForTskUsrWorkerId = tasksForTskUsrWorkerId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userByTskUsrLeaderId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userByTskUsrLeaderId")
 	public Set<Task> getTasksForTskUsrLeaderId()
 	{
 		return this.tasksForTskUsrLeaderId;
