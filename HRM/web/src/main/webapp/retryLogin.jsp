@@ -1,3 +1,4 @@
+<jsp:useBean id="formHandler" class="com.hrm.login.checkLogin" scope="request"/>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,13 +26,20 @@
 	<div id="content">
 		<div class="login">
 			<h1>Login</h1>
-			<form id="formCheck" action="check_login.jsp" method="POST">
+			<form action="check_login.jsp" method="POST">
 			<table>
 				<tr>
-					<td>User name: </td> <td><input type="text" name="loginName"></td>
+					<td>User name: </td> <td><input type="text" name="loginName" value='<%=formHandler.getLoginName()%>' 
+					<% if (!formHandler.isValid("loginName")) %> class = "errorInput" />
+					<br /> 
+					<span class="error"><%=formHandler.getErrorMsg("loginName")%></span>
+					</td>
 				</tr>
 				<tr>
-					<td>Password: </td> <td> <input type="password" name="password" /></td>
+					<td>Password: </td> <td> <input type="password" name="password" 
+					<% if (!formHandler.isValid("password")) %> class = "errorInput" /><br />
+					<span class="error"><%=formHandler.getErrorMsg("password")%></span>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align:right;"><input type="submit" value="Submit" /></td>
