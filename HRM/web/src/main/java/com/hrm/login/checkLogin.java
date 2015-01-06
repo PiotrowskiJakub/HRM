@@ -2,12 +2,17 @@ package com.hrm.login;
 
 import java.util.Hashtable;
 
+import com.hrm.DaoInitializer;
+import com.hrm.db.dao.EmployeeDao;
+
 public class checkLogin {
+	private EmployeeDao employeeDao;
 	private String loginName;
 	private String password;
 	private Hashtable<String,String> errors;
 
 	public checkLogin() {
+		employeeDao = DaoInitializer.getDao(EmployeeDao.class);
 		loginName = "";
 		password = "";
 		errors = new Hashtable<String,String>();

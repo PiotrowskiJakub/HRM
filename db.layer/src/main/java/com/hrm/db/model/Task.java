@@ -32,7 +32,8 @@ public class Task implements java.io.Serializable
 	private String nazwa;
 	private String tskDescription;
 	private Date tskCreationDate;
-	private int tskTime;
+	private Integer tskTime;
+	private Boolean tskFinished;
 	private Set<WorkLog> workLogs = new HashSet<WorkLog>(0);
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
@@ -41,19 +42,20 @@ public class Task implements java.io.Serializable
 	}
 
 	public Task(User userByTskUsrWorkerId, User userByTskUsrLeaderId,
-			String nazwa, Date tskCreationDate, int tskTime)
+			String nazwa, Date tskCreationDate, Integer tskTime, Boolean tskFinished)
 	{
 		this.userByTskUsrWorkerId = userByTskUsrWorkerId;
 		this.userByTskUsrLeaderId = userByTskUsrLeaderId;
 		this.nazwa = nazwa;
 		this.tskCreationDate = tskCreationDate;
 		this.tskTime = tskTime;
+		this.tskFinished = tskFinished;
 	}
 
 	public Task(Project project, TaskPriority taskPriority,
 			User userByTskUsrWorkerId, User userByTskUsrLeaderId,
 			String nazwa, String tskDescription, Date tskCreationDate,
-			int tskTime, Set<WorkLog> workLogs, Set<Comment> comments)
+			Integer tskTime, Boolean tskFinished, Set<WorkLog> workLogs, Set<Comment> comments)
 	{
 		this.project = project;
 		this.taskPriority = taskPriority;
@@ -63,6 +65,7 @@ public class Task implements java.io.Serializable
 		this.tskDescription = tskDescription;
 		this.tskCreationDate = tskCreationDate;
 		this.tskTime = tskTime;
+		this.tskFinished = tskFinished;
 		this.workLogs = workLogs;
 		this.comments = comments;
 	}
@@ -163,14 +166,25 @@ public class Task implements java.io.Serializable
 	}
 
 	@Column(name = "tsk_time", nullable = false)
-	public int getTskTime()
+	public Integer getTskTime()
 	{
 		return this.tskTime;
 	}
 
-	public void setTskTime(int tskTime)
+	public void setTskTime(Integer tskTime)
 	{
 		this.tskTime = tskTime;
+	}
+	
+	@Column(name = "tsk_finished")
+	public Boolean getTskFinished()
+	{
+		return this.tskFinished;
+	}
+
+	public void setTskFinished(Boolean tskFinished)
+	{
+		this.tskFinished = tskFinished;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "task")

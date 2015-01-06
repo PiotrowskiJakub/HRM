@@ -20,7 +20,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 	
 	public Boolean checkUser(String login, String password)
 	{
-		List<User> users=(List<User>)sf.getCurrentSession().createCriteria(User.class).list();
+		List<User> users = (List<User>) sf.getCurrentSession().createCriteria(User.class).list();
 		for(User usr : users)
 		{
 			if(usr.getUsrLogin().equals(login) && usr.getUsrPassword().equals(password))
