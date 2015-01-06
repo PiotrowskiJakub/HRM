@@ -19,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.hrm.db.conf.SpringAppConfiguration;
 
 @Import(JndiSpringDSConf.class)
+//@Import(ClassPathPropsSpringDSConf.class)	// import przy testowaniu bez serwera
 @ComponentScan(basePackages = "com.hrm.*")
 @EnableTransactionManagement
 @EnableWebMvc
