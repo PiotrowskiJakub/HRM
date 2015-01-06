@@ -31,6 +31,7 @@ public class checkLogin {
 			password = "";
 			isOk = false;
 		}
+		isOk = employeeDao.checkUser(loginName, password);
 		return isOk;
 	}
 
