@@ -8,7 +8,7 @@
       }
 %>
 
-<jsp:useBean id="formHandler" class="com.hrm.login.checkLogin" scope="request">
+<jsp:useBean id="formHandler" class="com.hrm.login.CheckLogin" scope="request">
 <jsp:setProperty name="formHandler" property="*"/>
 </jsp:useBean>
 <% 

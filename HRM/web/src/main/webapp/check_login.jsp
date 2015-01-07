@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean id="formHandler" class="com.hrm.login.checkLogin" scope="request">
+<jsp:useBean id="formHandler" class="com.hrm.login.CheckLogin" scope="request">
 <jsp:setProperty name="formHandler" property="*"/>
 </jsp:useBean>
 <% 
