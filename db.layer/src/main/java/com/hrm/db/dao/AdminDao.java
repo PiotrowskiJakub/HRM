@@ -8,16 +8,15 @@ import com.hrm.db.model.Role;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
 
-public interface TestDao
+public interface AdminDao
 {
-	Boolean checkUser(String login, String password);
-	Set<Project> getUserProjects(String login);
-	Set<Task> getUserTasks(String login);
 	List<User> getAllUsers();
 	Role getRole(String code);
 	void addUser(User user);
 	void deleteUser(String login);
 	User getUser(String login);
 	void editUser(User user);
+	Set<Project> getUserProjects(String login);
+	Set<Task> getUserTasks(String login);
 	void changeUserStatus(String login);
 }

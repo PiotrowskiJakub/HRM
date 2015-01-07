@@ -22,6 +22,8 @@ public class TestClass {
 	public static void main(String[] args)
 	{
 		TestDao testDao = getBean(TestDao.class);
-		System.out.println(testDao.getUserTasks("kuba"));
+		System.out.println(testDao.getAllUsers().get(1).getUsrLogin());
+//		Role role = testDao.getRole("pracownik");
+//		testDao.addUser(new User(role, "seba", "seba", true));
 	}
 }

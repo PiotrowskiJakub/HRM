@@ -36,8 +36,6 @@ public class DefaultSpringAppConfiguration implements SpringAppConfiguration {
 		sfBean.setDataSource(dataSource);
 		sfBean.setPackagesToScan("com.hrm.db.model");
 		Properties hibernateProperties = new Properties();
-//		hibernateProperties.put("hibernate.dialect",
-//				"org.hibernate.spatial.dialect.postgis.PostgisDialect");
 		hibernateProperties.put("show_sql",
 				"true");
 		sfBean.setHibernateProperties(hibernateProperties);
