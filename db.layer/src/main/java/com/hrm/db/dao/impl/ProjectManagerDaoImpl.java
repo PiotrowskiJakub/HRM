@@ -21,17 +21,23 @@ public class ProjectManagerDaoImpl implements ProjectManagerDao
 	@Autowired
 	private SessionFactory sf;
 	
-	public Set<Project> getUserProjects(String login)
+	public User getUser(String login)
 	{
-		User user = (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrLogin", login)).uniqueResult();
-		
-		return user.getProjects();
+		return (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrLogin", login)).uniqueResult();
+	}
+	
+	public Set<Project> getUserProjects(String login)
+	{	
+		return getUser(login).getProjects();
 	}
 	
 	public Set<Task> getUserTasks(String login)
+	{	
+		return getUser(login).getTasksForTskUsrWorkerId();
+	}
+	
+	public Project getProject(String name)
 	{
-		User user = (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrLogin", login)).uniqueResult();
-		
-		return user.getTasksForTskUsrWorkerId();
+		return (Project) sf.getCurrentSession().createCriteria(Project.class).add(Restrictions.eq("prjName", name)).uniqueResult();
 	}
 }

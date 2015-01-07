@@ -76,7 +76,7 @@ public class Section implements java.io.Serializable
 		this.secCode = secCode;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "section")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "section")
 	public Set<User> getUsers()
 	{
 		return this.users;

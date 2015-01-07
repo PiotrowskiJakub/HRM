@@ -187,7 +187,7 @@ public class Task implements java.io.Serializable
 		this.tskFinished = tskFinished;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
 	public Set<WorkLog> getWorkLogs()
 	{
 		return this.workLogs;
@@ -198,7 +198,7 @@ public class Task implements java.io.Serializable
 		this.workLogs = workLogs;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
 	public Set<Comment> getComments()
 	{
 		return this.comments;

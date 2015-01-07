@@ -76,7 +76,7 @@ public class TaskPriority implements java.io.Serializable
 		this.tprCode = tprCode;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taskPriority")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "taskPriority")
 	public Set<Task> getTasks()
 	{
 		return this.tasks;

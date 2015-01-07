@@ -76,7 +76,7 @@ public class LeaveType implements java.io.Serializable
 		this.ltpCode = ltpCode;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "leaveType")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "leaveType")
 	public Set<Leave> getLeaves()
 	{
 		return this.leaves;

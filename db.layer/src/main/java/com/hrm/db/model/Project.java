@@ -108,7 +108,7 @@ public class Project implements java.io.Serializable
 		this.prjFinished = prjFinished;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
 	public Set<Task> getTasks()
 	{
 		return this.tasks;
@@ -119,7 +119,7 @@ public class Project implements java.io.Serializable
 		this.tasks = tasks;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_projects", catalog = "sbatko1", joinColumns = { @JoinColumn(name = "upr_prj_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "upr_usr_id", nullable = false, updatable = false) })
 	public Set<User> getUsers()
 	{

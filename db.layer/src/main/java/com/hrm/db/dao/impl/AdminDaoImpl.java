@@ -58,21 +58,17 @@ public class AdminDaoImpl implements AdminDao
 	
 	public Set<Project> getUserProjects(String login)
 	{
-		User user = (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrLogin", login)).uniqueResult();
-		
-		return user.getProjects();
+		return getUser(login).getProjects();
 	}
 
 	public Set<Task> getUserTasks(String login)
 	{
-		User user = (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrLogin", login)).uniqueResult();
-		
-		return user.getTasksForTskUsrWorkerId();
+		return getUser(login).getTasksForTskUsrWorkerId();
 	}
 	
 	public void changeUserStatus(String login)
 	{
-		User user = (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrLogin", login)).uniqueResult();
+		User user = getUser(login);
 		Boolean usrActive = user.isUsrActive();
 		user.setUsrActive(!usrActive);
 		editUser(user);

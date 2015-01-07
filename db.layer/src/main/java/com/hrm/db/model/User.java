@@ -201,7 +201,7 @@ public class User implements java.io.Serializable
 		this.usrLeaveLimit = usrLeaveLimit;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<User> getUsers()
 	{
 		return this.users;
@@ -224,7 +224,7 @@ public class User implements java.io.Serializable
 		this.projects = projects;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<WorkLog> getWorkLogs()
 	{
 		return this.workLogs;
@@ -235,7 +235,7 @@ public class User implements java.io.Serializable
 		this.workLogs = workLogs;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userByLeaWhoDecided")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userByLeaWhoDecided")
 	public Set<Leave> getLeavesForLeaWhoDecided()
 	{
 		return this.leavesForLeaWhoDecided;
@@ -268,7 +268,7 @@ public class User implements java.io.Serializable
 		this.tasksForTskUsrLeaderId = tasksForTskUsrLeaderId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userByLeaUsrId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userByLeaUsrId")
 	public Set<Leave> getLeavesForLeaUsrId()
 	{
 		return this.leavesForLeaUsrId;
@@ -279,7 +279,7 @@ public class User implements java.io.Serializable
 		this.leavesForLeaUsrId = leavesForLeaUsrId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<Comment> getComments()
 	{
 		return this.comments;
