@@ -18,7 +18,7 @@ public class UserManagement {
 		
 		List<User> userList = adminDao.getAllUsers();
 		
-		System.out.println("pierwszy: " + userList.get(0));
+		System.out.println("pierwszy: " + userList.get(0).getUsrLogin());
 		System.out.println("ilość: " + userList.size());
 	}
 	
