@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.hrm.DaoInitializer;
 import com.hrm.db.dao.AdminDao;
-import com.hrm.db.model.User;;
+import com.hrm.db.model.User;
 
 public class UserManagement {
 	private AdminDao adminDao;
@@ -14,12 +14,13 @@ public class UserManagement {
 		adminDao = DaoInitializer.getDao(AdminDao.class);
 	}
 	
-	public void show(){
+	public List<User> show(){
 		
 		List<User> userList = adminDao.getAllUsers();
 		
-		System.out.println("pierwszy: " + userList.get(0).getUsrLogin());
-		System.out.println("ilość: " + userList.size());
+		//System.out.println("pierwszy: " + userList.get(0).getRole().getRolName());
+		//System.out.println("ilość: " + userList.size());
+		return userList;
 	}
 	
 	
