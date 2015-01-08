@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.hrm.db.conf.impl.DefaultSpringAppConfiguration;
-import com.hrm.db.dao.EmployeeDao;
+import com.hrm.db.dao.AdminDao;
 
 /**
  * 
@@ -21,7 +21,7 @@ public class TestClass {
 	
 	public static void main(String[] args)
 	{
-		EmployeeDao employeeDao = getBean(EmployeeDao.class);
-		System.out.println(employeeDao.getTaskComments(111).size());
+		AdminDao adminDao = getBean(AdminDao.class);
+		System.out.println(adminDao.getUser("kuba").getSection().getSecCode());
 	}
 }

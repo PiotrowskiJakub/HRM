@@ -64,7 +64,7 @@ public class Leave implements java.io.Serializable
 		this.leaId = leaId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "lea_ltp_id")
 	public LeaveType getLeaveType()
 	{
@@ -76,7 +76,7 @@ public class Leave implements java.io.Serializable
 		this.leaveType = leaveType;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "lea_who_decided")
 	public User getUserByLeaWhoDecided()
 	{
@@ -88,7 +88,7 @@ public class Leave implements java.io.Serializable
 		this.userByLeaWhoDecided = userByLeaWhoDecided;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "lea_usr_id", nullable = false)
 	public User getUserByLeaUsrId()
 	{

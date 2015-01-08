@@ -58,7 +58,7 @@ public class Comment implements java.io.Serializable
 		this.comId = comId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "com_tsk_id", nullable = false)
 	public Task getTask()
 	{
@@ -70,7 +70,7 @@ public class Comment implements java.io.Serializable
 		this.task = task;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "com_usr_id", nullable = false)
 	public User getUser()
 	{

@@ -31,6 +31,8 @@ public class User implements java.io.Serializable
 	private Role role;
 	private Section section;
 	private User user;
+	private String usrName;
+	private String usrSurname;
 	private String usrLogin;
 	private String usrPassword;
 	private String usrEmail;
@@ -98,7 +100,7 @@ public class User implements java.io.Serializable
 		this.usrId = usrId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usr_rol_id", nullable = false)
 	public Role getRole()
 	{
@@ -110,7 +112,7 @@ public class User implements java.io.Serializable
 		this.role = role;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usr_sec_id")
 	public Section getSection()
 	{
@@ -122,7 +124,7 @@ public class User implements java.io.Serializable
 		this.section = section;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usr_boss_usr_id")
 	public User getUser()
 	{
@@ -132,6 +134,28 @@ public class User implements java.io.Serializable
 	public void setUser(User user)
 	{
 		this.user = user;
+	}
+	
+	@Column(name = "usr_name", length = 100)
+	public String getUsrName()
+	{
+		return this.usrName;
+	}
+
+	public void setUsrName(String usrName)
+	{
+		this.usrName = usrName;
+	}
+	
+	@Column(name = "usr_surname", length = 100)
+	public String getUsrSurname()
+	{
+		return this.usrSurname;
+	}
+
+	public void setUsrSurname(String usrSurname)
+	{
+		this.usrSurname = usrSurname;
 	}
 
 	@Column(name = "usr_login", unique = true, nullable = false, length = 100)

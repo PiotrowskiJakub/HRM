@@ -63,7 +63,7 @@ public class WorkLog implements java.io.Serializable
 		this.wloId = wloId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "wlo_tsk_id", nullable = false)
 	public Task getTask()
 	{
@@ -75,7 +75,7 @@ public class WorkLog implements java.io.Serializable
 		this.task = task;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "wlo_usr_id", nullable = false)
 	public User getUser()
 	{
