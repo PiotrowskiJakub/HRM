@@ -83,7 +83,7 @@ public class Task implements java.io.Serializable
 		this.tskId = tskId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tsk_prj_id")
 	public Project getProject()
 	{
@@ -95,7 +95,7 @@ public class Task implements java.io.Serializable
 		this.project = project;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tsk_tpr_id")
 	public TaskPriority getTaskPriority()
 	{
@@ -107,7 +107,7 @@ public class Task implements java.io.Serializable
 		this.taskPriority = taskPriority;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tsk_usr_worker_id", nullable = false)
 	public User getUserByTskUsrWorkerId()
 	{
@@ -119,7 +119,7 @@ public class Task implements java.io.Serializable
 		this.userByTskUsrWorkerId = userByTskUsrWorkerId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tsk_usr_leader_id", nullable = false)
 	public User getUserByTskUsrLeaderId()
 	{
