@@ -69,15 +69,15 @@
 			<div class="entry">
 				<table title="users" style="width:100%">
 				  <tr>
-				    <td>Login</td>
-				    <td>Imie</td> 
-				    <td>Nazwisko</td>
-				    <td>E-mail</td>
-				    <td>Sektor</td> 
-				    <td>Rola</td>
-				    <td>Przelozony</td>
-				    <td>Data utworzenia</td> 
-				    <td>Stan konta</td>
+				    <th>Login</th>
+				    <th>Imie</th> 
+				    <th>Nazwisko</th>
+				    <th>E-mail</th>
+				    <th>Sektor</th> 
+				    <th>Rola</th>
+				    <th>Przelozony</th>
+				    <th>Data utworzenia</th> 
+				    <th>Stan konta</th>
 				    
 				  </tr>
 				  <%
@@ -90,17 +90,17 @@
 				 	%>
 					  <tr>
 					    <td><%=usr.getUsrLogin() %></td>
-					    <td>X</td> 
-					    <td>X</td>
+					    <td><%=usr.getUsrName() %></td> 
+					    <td><%=usr.getUsrSurname() %></td>
 					    <td><%=usr.getUsrEmail() %></td>
-					    <td>X</td>
-					    <td>X</td>
-					    <td>X</td>
+					    <td><%=usr.getSection().getSecName() %></td>
+					    <td><%=usr.getRole().getRolName() %></td>
+					    <td><%=usr.getUser().getUsrName() + " " + usr.getUser().getUsrSurname() %></td>
 					    <td><%=usr.getUsrDateCreation().toString() %></td>
 					    <%if(usr.isUsrActive()){%>
-					    	<td>Aktywne</td>
+					    	<td><button type="button">Aktywne</button></td>
 					   	<%}else{ %>
-					   		<td>Nieaktywne</td>
+					   		<td><button type="button">Nieaktywne</button></td>
 					    <% } %>
 					    <td><img src="images/admin/edit.png" alt="Edit" style="width:30px;height:30px"></td>
 					    <td><img src="images/admin/delete.png" alt="Delete" style="width:30px;height:30px"></td>
@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	
-	<!-- start sidebar -->
+	<!-- start sidebar 
 	<div id="sidebar">
 		<ul>
 			<li id="search">
@@ -136,7 +136,7 @@
 			</li>
 		</ul>
 	</div>
-	<!-- end sidebar -->
+	end sidebar -->
 	<div style="clear: both;">&nbsp;</div>
  </div>
  
