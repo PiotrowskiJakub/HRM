@@ -20,19 +20,29 @@ public class CheckLogin {
 
 	public boolean validate() {
 		boolean isOk = true;
+		
 		if (loginName.equals("")) {
-			errors.put("loginName", "Please enter your login");
+			errors.put("loginName", "Wprowadź login");
 			loginName = "";
 			isOk = false;
 		}
 
 		if (password.equals("")){
-			errors.put("password", "Please enter your password");
+			errors.put("password", "Wprowadź hasło");
 			password = "";
 			isOk = false;
 		}
-		isOk = employeeDao.checkUser(loginName, password);
+		
 		return isOk;
+	}
+	
+	public boolean checkUser(){
+		if(!employeeDao.checkUser(loginName, password)){
+			errors.put("badLoginPassword", "Niepoprawne hasło lub login ");
+			password = "";
+			return false;
+		}
+		return true;
 	}
 
 	public String getErrorMsg(String s) {
@@ -59,5 +69,9 @@ public class CheckLogin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	public int getRole(){
+		return employeeDao.getUserRole(loginName).getRolId();
+	}
+	
 }
