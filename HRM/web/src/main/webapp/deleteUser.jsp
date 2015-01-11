@@ -8,7 +8,6 @@
 </jsp:useBean>
 
 <%
-System.out.println("LOGIN: |" + formHandler.getLoginName() + "| " + formHandler.getClass().getName() );
 formHandler.deleteUser();
 response.sendRedirect("adminpanel.jsp");
 %>

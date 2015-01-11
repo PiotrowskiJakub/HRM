@@ -74,11 +74,14 @@
 				  </tr>
 				  <%
 					UserManagement userManagement = new UserManagement();
-				 	List<User> users = userManagement.show();
-				 	String login, email;
+				 	List<User> users = userManagement.getAllUsers();
+				 	String boss;
 				 	for(User usr : users) {
-				 		login = usr.getUsrLogin();
-				 		email = usr.getUsrEmail();
+				 		if(usr.getUser() != null){
+				 			boss = usr.getUser().getUsrName() + " " + usr.getUser().getUsrSurname();
+				 		} else{
+				 			boss = "Prezes";
+				 		}
 				 	%>
 					  <tr>
 					    <td><%=usr.getUsrLogin() %></td>
@@ -87,7 +90,7 @@
 					    <td><%=usr.getUsrEmail() %></td>
 					    <td><%=usr.getSection().getSecName() %></td>
 					    <td><%=usr.getRole().getRolName() %></td>
-					    <td><%=usr.getUser().getUsrName() + " " + usr.getUser().getUsrSurname() %></td>
+					    <td><%=boss %></td>
 					    <td><%=usr.getUsrDateCreation().toString() %></td>
 					    <%if(usr.isUsrActive()){%>
 					    	<td><form id="formCheck" action="changeUserStatus.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Aktywne" /></form></td>

@@ -1,5 +1,5 @@
 <%@ page import="java.util.*"%>
-<%@page import="com.hrm.db.dao.impl.AdminDaoImpl, com.hrm.db.model.User"%>
+<%@page import="com.hrm.db.model.Section, com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User, com.hrm.db.model.Role"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -87,6 +87,35 @@
 				</tr>
 				<tr>
 					<td>E-mail: </td> <td> <input type="text" name="email" value="<%=formHandler.getEmail() %>" /></td>
+				</tr>
+				<tr>
+					<td>Pracuje jako:</td><td><input type=text name="role" value="<%=formHandler.getRole() %>" list=roles><datalist id=roles>
+					<%
+					UserManagement userManagement = new UserManagement();
+				 	List<Role> roles = userManagement.getAllRoles();
+				 	for(Role role : roles) {
+				 	%>
+				 	if(formHandler.getEmai)
+						<option value="<%=role.getRolName()%>">
+					<% } %></datalist></td>
+				</tr>
+				<tr>
+					<td>Dzial:</td><td><input type=text name="section" value="<%=formHandler.getSection() %>" list=sections><datalist id=sections>
+					<%
+				 	List<Section> sections = userManagement.getAllSection();
+				 	for(Section section : sections) {
+				 	%>
+						<option value="<%=section.getSecName()%>">
+					<% } %></datalist></td>
+				</tr>
+				<tr>
+					<td>Przelozony:</td><td><input type=text name="boss" value="<%=formHandler.getBoss() %>" list=bosses><datalist id=bosses>
+					<%
+				 	List<User> bosses = userManagement.getAllUsers();
+				 	for(User boss : bosses) {
+				 	%>
+						<option value="<%=boss.getUsrLogin()%>">
+					<% } %></datalist></td>
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align:right;"><input type="submit" value="Zapisz" /></td>
