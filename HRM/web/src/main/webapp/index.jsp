@@ -10,7 +10,7 @@
 
 <%
 	String userId;
-    if ((userId = (String)session.getAttribute("userid")) != null &&  userId != "") {
+    if ((userId = (String)session.getAttribute("userid")) != null && !userId.equals("")) {
     	CheckLogin login = new CheckLogin();
     	login.setLoginName(userId);
     	switch(login.getRole()){

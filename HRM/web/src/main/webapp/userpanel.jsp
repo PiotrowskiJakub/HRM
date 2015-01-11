@@ -1,3 +1,6 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Set"%>
+<%@page import="com.hrm.user.EmployeeManager"%>
 <%@page import="com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,8 +11,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Panel uzytkownika</title>
 <link href="user.css" rel="stylesheet" type="text/css" />
-
-
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
      var auto = setInterval(    function ()
@@ -44,6 +45,29 @@
 </script>
 </head>
 <body>
+
+<!--  initialize EmployeeManager -->
+<%
+String userId;
+EmployeeManager employeeManager = null;
+
+if ((userId = (String)session.getAttribute("userid")) != null && !userId.equals("")) {
+	employeeManager = new EmployeeManager((String)session.getAttribute("userid"));
+	
+}else{
+	%>
+	<jsp:forward page="index.jsp?login=false" />
+	<%
+}
+
+if(employeeManager == null){
+	%>
+	<jsp:forward page="index.jsp?login=false" />
+	<%
+	}
+%>
+
+
 <!-- start header -->
 <div id="header">
 	<div id="logo">
@@ -58,16 +82,6 @@
 						<li><a href="#">Drupal</a></li>
 						<li><a href="#">WordPress</a></li>
 						<li><a href="#">Concrete 3</a></li>
-						<li><a href="#">Concrete 4</a></li>
-						<li><a href="#">Concrete 5</a></li>
-						<li><a href="#">Concrete 6</a></li>
-						<li><a href="#">Concrete 7</a></li>
-						<li><a href="#">Concrete 8</a></li>
-						<li><a href="#">Concrete 9</a></li>
-						<li><a href="#">Concrete 10</a></li>
-						<li><a href="#">Concrete 11</a></li>
-						<li><a href="#">Concrete 12</a></li>
-						<li><a href="#">Concrete 13</a></li>
 					</ul></li>
 					<li><a href="#">Moje Projekty</a></li>
 			</ul>
@@ -317,8 +331,8 @@
 					</div>
 					
 					<div class="details">
-						<div class="name">Konrad Hopek</div>
-						<div class="email"><a href="mailto: ">konradhopek@hrm.pl</a></div>
+						<div class="name"><%=employeeManager.getFullName()%></div>
+						<div class="email"><a href="mailto:<%=employeeManager.getEmail()%> "><%=employeeManager.getEmail()%></a></div>
 						<div class="logout"><a href="logout.jsp">Wyloguj się</a></div>
 					</div>
 				</div>
@@ -328,23 +342,18 @@
 				<hr style="border:solid 1px #bcbcbc; margin: 0 7px;"/>
 				
 				<div class="task_sidebar">
+				<%
+				
+				for(Map.Entry<String,Integer[]> task_info : employeeManager.getAllTitlesTask()){
+									
+				%>
 					<p class="task_sidebar_description">
-						<span class="task_sidebar_title">nazwa tasku</span>
-						<span class="task_sidebar_time"> godzinę temu</span>
+						<span class="task_sidebar_title"><%=task_info.getKey() %></span>
+						<span class="task_sidebar_time"><%=employeeManager.getTimeString(task_info.getValue()[1]) %></span>
 					</p>
-					<p class="task_amount">8</p>
+					<p class="task_amount"><%=task_info.getValue()[0] %></p>
 					<div style="clear:both">&nbsp;</div>		
-					<p class="task_sidebar_description">
-						<span class="task_sidebar_title">dasdasdas</span>
-						<span class="task_sidebar_time"> dasda</span>
-					</p>
-					<p class="task_amount">13</p>
-					<div style="clear:both">&nbsp;</div>
-					<p class="task_sidebar_description">
-						<span class="task_sidebar_title">dasdasdas</span>
-						<span class="task_sidebar_time"> dasda</span>
-					</p>
-					<p class="task_amount">8</p>
+				<% } %>
 				</div>
 				
 			</div>

@@ -9,22 +9,27 @@
 <%
 	if (formHandler.validate()) {
 		if (formHandler.checkUser()) {
-			session.setAttribute("userid", formHandler.getLoginName());
-			switch(formHandler.getRole()){
-			case 1:
-				response.sendRedirect("userpanel.jsp");
-				break;
-			case 2:
-				response.sendRedirect("adminpanel.jsp");
-				break;
-			case 3:
-				response.sendRedirect("pmpanel.jsp");
-				break;
-			default:
-				response.sendRedirect("errorpage.jsp");
-				break;
-			}			
-		} else {
+			if(formHandler.isActive()){
+				session.setAttribute("userid", formHandler.getLoginName());
+	
+				switch(formHandler.getRole()){
+				case 1:
+					response.sendRedirect("userpanel.jsp");
+					break;
+				case 2:
+					response.sendRedirect("adminpanel.jsp");
+					break;
+				case 3:
+					response.sendRedirect("pmpanel.jsp");
+					break;
+				default:
+					response.sendRedirect("errorpage.jsp");
+					break;
+				}
+			}else{
+				response.sendRedirect("index.jsp?active=false");	
+			}
+	 	} else {
 			response.sendRedirect("retryLogin.jsp");
 		}
 	} else {

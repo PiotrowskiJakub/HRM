@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>AdminDeleteUser</display-name>
+    <servlet-name>AdminDeleteUser</servlet-name>
+    <servlet-class>AdminDeleteUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDeleteUser</servlet-name>
+    <url-pattern>/AdminDeleteUser</url-pattern>
+  </servlet-mapping>
 </web-app>

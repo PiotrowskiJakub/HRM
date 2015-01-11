@@ -35,6 +35,9 @@ public class CheckLogin {
 		
 		return isOk;
 	}
+	public boolean isActive(){
+		return employeeDao.getUser(loginName).isUsrActive();
+	}
 	
 	public boolean checkUser(){
 		if(!employeeDao.checkUser(loginName, password)){
