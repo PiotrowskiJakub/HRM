@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hrm.db.dao.AdminDao;
 import com.hrm.db.model.Project;
 import com.hrm.db.model.Role;
+import com.hrm.db.model.Section;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
 
@@ -28,6 +29,18 @@ public class AdminDaoImpl implements AdminDao
 	{
 		Criteria crt = sf.getCurrentSession().createCriteria(User.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		return (List<User>) crt.list();
+	}
+	
+	public List<Role> getAllRoles()
+	{
+		Criteria crt = sf.getCurrentSession().createCriteria(Role.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return (List<Role>) crt.list();
+	}
+
+	public List<Section> getAllSection()
+	{
+		Criteria crt = sf.getCurrentSession().createCriteria(Section.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return (List<Section>) crt.list();
 	}
 	
 	public Role getRole(String code)
