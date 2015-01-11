@@ -43,9 +43,24 @@ public class AdminDaoImpl implements AdminDao
 		return (List<Section>) crt.list();
 	}
 	
-	public Role getRole(String code)
+	public Role getRoleByCode(String code)
 	{
 		return (Role) sf.getCurrentSession().createCriteria(Role.class).add(Restrictions.eq("rolCode", code)).uniqueResult();
+	}
+	
+	public Role getRoleByName(String name)
+	{
+		return (Role) sf.getCurrentSession().createCriteria(Role.class).add(Restrictions.eq("rolName", name)).uniqueResult();
+	}
+
+	public Section getSectionByCode(String code)
+	{
+		return (Section) sf.getCurrentSession().createCriteria(Section.class).add(Restrictions.eq("secCode", code)).uniqueResult();
+	}
+
+	public Section getSectionByName(String name)
+	{
+		return (Section) sf.getCurrentSession().createCriteria(Section.class).add(Restrictions.eq("secName", name)).uniqueResult();
 	}
 	
 	public void addUser(User user)

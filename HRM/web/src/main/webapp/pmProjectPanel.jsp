@@ -1,7 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project"%>
+<%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project,
+com.hrm.db.model.Task"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%!
+private String getTimeOutput(int tskTime) {
+	String result = "";
+	int minutes = (int) ((tskTime / (1000*60)) % 60);
+	int hours   = (int) ((tskTime / (1000*60*60)) % 24);
+	int days   = (int) ((tskTime / (1000*60*60*24)));
+	int weeks   = (int) ((tskTime / (1000*60*60*24*7)));
+	
+	if(weeks > 0) {
+		result += weeks + "w ";
+	} if(days > 0) {
+		result += days + "d ";
+	} if(hours > 0) {
+		result += hours + "h ";
+	} if(minutes > 0) {
+		result += minutes + "min ";
+	}
+	
+	return result;
+}
+%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,6 +50,16 @@
      {
           $('#score').load('reload-window.jsp').fadeIn("slow");
      }, 1000); // refresh every 5000 milliseconds
+</script>
+
+<!-- Row in table as link -->
+<script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	    $(".clickableRow").click(function() {
+	          window.document.location = $(this).attr("href");
+	    });
+	});
 </script>
 
 <!-- Changes the opacity of sidebar while menu list is displayed -->
@@ -56,7 +89,11 @@
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
 				<li><a href="${mainUrl}">Strona Startowa</a></li>
-				<li><a href="#">Zarz&#261;dzaj</a></li>
+				<c:url value="selectPMPanel.jsp" var="employeesUrl">
+							<c:param name="type" value="2" />
+							<c:param name="userid" value="<%= userId %>" />
+				</c:url>
+				<li><a href="${employeesUrl}">Zarz&#261;dzaj</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
 					<a href="#">Twoje projekty</a>
 					<ul>
@@ -95,10 +132,38 @@
 		<div class="post">
 			<div class="entry">
 				<h2 style="color:green">
-					<font class="uppercase">HRM &mdash; </font><font class="capitalize">Human Resource Management</font>
+					<font class="capitalize"><%= projectId %></font>
 				</h2><br><br>
 				<p>
-					<%= projectId %>
+					<table>
+					<thead>
+						<tr>
+							<th><b>Nazwa zadania:  </b></th>
+							<th><b>Osoba odpowiedzialna:  </b></th>
+							<th><b>Przeznaczony czas:</b></th>	
+						</tr>
+					</thead>
+					<tbody>
+					<%
+						List<Task> tasks = uspm.getProjectTasks(projectId);
+						for(Task t : tasks) {
+				          String nazwa = t.getNazwa();
+				          String assignee = t.getUserByTskUsrWorkerId().getUsrName();
+				          String time = getTimeOutput(t.getTskTime());
+						  %>
+						  		<c:url value="selectPMPanel.jsp" var="taskUrl">
+									<c:param name="type" value="4" />
+									<c:param name="taskid" value="<%= nazwa %>" />
+									<c:param name="userid" value="<%= userId %>" />
+								</c:url>
+								<tr class='clickableRow' href="${taskUrl}">
+									<td><%= nazwa %></td>
+									<td><%= assignee %></td>
+									<td><%= time %></td>
+								</tr>		
+						<% } %>
+					</tbody>
+					</table>
 				</p>
 			</div>
 		</div>
