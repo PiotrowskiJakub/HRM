@@ -1,3 +1,4 @@
+<%@page import="com.hrm.db.dao.impl.AdminDaoImpl"%>
 <%@page import="com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -29,6 +30,8 @@
 </script>
 </head>
 <body>
+
+
 <!-- start header -->
 <div id="header">
 	<div id="logo">
@@ -38,23 +41,12 @@
 	<div id="menu">
 			<ul>
 				<li><a href="#">Strona Startowa</a></li>
-				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Zarz&#261;dzaj</a>
+				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
-						<li><a href="#">Drupal</a></li>
-						<li><a href="#">WordPress</a></li>
-						<li><a href="#">Concrete 3</a></li>
-						<li><a href="#">Concrete 4</a></li>
-						<li><a href="#">Concrete 5</a></li>
-						<li><a href="#">Concrete 6</a></li>
-						<li><a href="#">Concrete 7</a></li>
-						<li><a href="#">Concrete 8</a></li>
-						<li><a href="#">Concrete 9</a></li>
-						<li><a href="#">Concrete 10</a></li>
-						<li><a href="#">Concrete 11</a></li>
-						<li><a href="#">Concrete 12</a></li>
-						<li><a href="#">Concrete 13</a></li>
+						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
+						<li><a href="#">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
-					<li><a href="#">Moje Projekty</a></li>
+				<li><a href="#">Zarzadzaj projektami</a></li>
 			</ul>
 
 			
@@ -65,9 +57,7 @@
 <div id="page">
 	<!-- start content -->
 	<div id="content">
-		<div class="post">
-			<div class="entry">
-				<table title="users" style="width:100%">
+				<table title="users">
 				  <tr>
 				    <th>Login</th>
 				    <th>Imie</th> 
@@ -78,6 +68,8 @@
 				    <th>Przelozony</th>
 				    <th>Data utworzenia</th> 
 				    <th>Stan konta</th>
+				    <th></th>
+				    <th></th>
 				    
 				  </tr>
 				  <%
@@ -98,19 +90,17 @@
 					    <td><%=usr.getUser().getUsrName() + " " + usr.getUser().getUsrSurname() %></td>
 					    <td><%=usr.getUsrDateCreation().toString() %></td>
 					    <%if(usr.isUsrActive()){%>
-					    	<td><button type="button">Aktywne</button></td>
+					    	<td><form id="formCheck" action="changeUserStatus.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Aktywne" /></form></td>
 					   	<%}else{ %>
-					   		<td><button type="button">Nieaktywne</button></td>
+					   		<td><form id="formCheck" action="changeUserStatus.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Nieaktywne" /></form></td>
 					    <% } %>
-					    <td><img src="images/admin/edit.png" alt="Edit" style="width:30px;height:30px"></td>
-					    <td><img src="images/admin/delete.png" alt="Delete" style="width:30px;height:30px"></td>
+					    <td><form id="formCheck" action="editUserForm.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Edytuj" /></form></td>
+					    <td><form id="formCheck" action="deleteUser.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Usun" /></form></td>
 					  </tr>
 					<% } %>
 				</table>
-			</div>
-		</div>
 	</div>
-	
+	<p id="demo"></p>
 	<!-- start sidebar 
 	<div id="sidebar">
 		<ul>
@@ -167,5 +157,8 @@
 	</div>
 </div>
 <!-- end footer -->
+
+
+
 </body>
 </html>
