@@ -55,6 +55,17 @@
          <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
          <scope>provided</scope>
       </dependency>
+      
+      <dependency>
+    <groupId>jstl</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+<dependency>
+    <groupId>taglibs</groupId>
+    <artifactId>standard</artifactId>
+    <version>1.1.2</version>
+</dependency>
 
       <!-- Import the CDI API, we use provided scope as the API is included in JBoss AS 7 -->
       <dependency>
