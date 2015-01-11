@@ -40,9 +40,8 @@ public class EmployeeManager {
 		for(Task currentTask : employeeDao.getUserTasks(loginName)){
 			Integer [] tmpInt = {
 					employeeDao.getTaskComments(currentTask.getTskId()).size(),
-					(int)(((now.getTime() - currentTask.getTskCreationDate().getTime())/(1000*60)) % 60)
+					(int)((now.getTime() - currentTask.getTskCreationDate().getTime())/(1000*60))
 			};
-			
 			tmp.put(currentTask.getNazwa(),tmpInt);
 		}
 		return tmp.entrySet();
