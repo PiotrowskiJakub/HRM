@@ -67,7 +67,7 @@
 	<div id="content">
 		<div class="post">
 			<div class="entry">
-				<table title="users" style="width:100%">
+				<table title="users" >
 				  <tr>
 				    <th>Login</th>
 				    <th>Imie</th> 
