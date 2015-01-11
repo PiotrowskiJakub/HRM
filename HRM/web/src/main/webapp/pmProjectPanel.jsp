@@ -12,6 +12,7 @@
 <link href="pm.css" rel="stylesheet" type="text/css" />
 <%
 	String userId = "";
+	String projectId =(String) session.getAttribute("projectid");
 	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
 		response.sendRedirect("index.jsp?login=false");	
 	} else {
@@ -97,18 +98,7 @@
 					<font class="uppercase">HRM &mdash; </font><font class="capitalize">Human Resource Management</font>
 				</h2><br><br>
 				<p>
-					Witamy na stronie Project Managera!<br>
-					Aplikacja Human Resource Management zosta&#322;a napisana przez student&#243;w Akademii G&#243;rniczo-Hutniczej 
-					<br>na Wydziale Elektrotechniki, Automatyki, Informatyki i In&#380;ynierii Biomedycznej,
-					na potrzeby <br>przedmiotu "Wprowadzenie do wzorc&#243;w projektowych" prowadzonego przez
-					dr. Rafa&#322;a Mr&#243;wk&#281;.<br><br>
-					Autorzy:
-					<ul>
-						<li>Batko Sebastian</li>
-						<li>Hopek Konrad</li>
-						<li>Jasi&#324;ski Przemys&#322;aw</li>
-						<li>Piotrowski Jakub</li>
-					</ul>
+					<%= projectId %>
 				</p>
 			</div>
 		</div>
