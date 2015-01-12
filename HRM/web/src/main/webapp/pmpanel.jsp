@@ -55,7 +55,11 @@
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
 				<li><a href="${mainUrl}">Strona Startowa</a></li>
-				<li><a href="#">Zarz&#261;dzaj</a></li>
+				<c:url value="selectPMPanel.jsp" var="employeesUrl">
+							<c:param name="type" value="2" />
+							<c:param name="userid" value="<%= userId %>" />
+				</c:url>
+				<li><a href="${employeesUrl}">Zarz&#261;dzaj</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
 					<a href="#">Twoje projekty</a>
 					<ul>
@@ -80,6 +84,7 @@
 							<%= prjName %></font></a></li>
 						<% } %>
 					</ul></li>
+					<li><a href="logout.jsp">Wyloguj</a></li>
 			</ul>
 
 			

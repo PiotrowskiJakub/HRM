@@ -46,6 +46,19 @@ public class UserProjectsManagement {
 		return tasks;
 	}
 	
+	public Task getTask(String tskName) {
+
+		for(Project p : this.projects) {
+			for(Task t : p.getTasks()) {
+				if(t.getNazwa().equals(tskName)) {
+					return t;
+				}
+			}
+		}
+		
+		return new Task();
+	}
+	
 	private Project getProject(String prjName) {
 		for(Project p : this.projects) {
 			if(p.getPrjName().equals(prjName)) {

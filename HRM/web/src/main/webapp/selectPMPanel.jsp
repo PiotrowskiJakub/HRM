@@ -20,7 +20,13 @@
 	case 4:
 		session.setAttribute("userid", request.getParameter("userid"));
 		session.setAttribute("taskid", request.getParameter("taskid"));
-		response.sendRedirect("taskPanel.jsp");
+		response.sendRedirect("pmTaskPanel.jsp");
+		break;
+	case 5:
+		session.setAttribute("userid", request.getParameter("userid"));
+		session.setAttribute("taskid", request.getParameter("taskid"));
+		response.sendRedirect("pmpanel.jsp");
+		break;
 		
 	}
 %>

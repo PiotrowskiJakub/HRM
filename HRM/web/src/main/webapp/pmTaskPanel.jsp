@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project,
-com.hrm.db.model.Task"%>
+com.hrm.db.model.Task, com.hrm.db.model.Comment, com.hrm.db.model.TaskPriority, com.hrm.db.model.WorkLog,
+com.hrm.db.model.User"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%!
@@ -35,7 +36,7 @@ private String getTimeOutput(int tskTime) {
 <link href="pm.css" rel="stylesheet" type="text/css" />
 <%
 	String userId = "";
-	String projectId =(String) session.getAttribute("projectid");
+	String taskId = (String) session.getAttribute("taskid");
 	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
 		response.sendRedirect("index.jsp?login=false");	
 	} else {
@@ -50,16 +51,6 @@ private String getTimeOutput(int tskTime) {
      {
           $('#score').load('reload-window.jsp').fadeIn("slow");
      }, 1000); // refresh every 5000 milliseconds
-</script>
-
-<!-- Row in table as link -->
-<script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-	    $(".clickableRow").click(function() {
-	          window.document.location = $(this).attr("href");
-	    });
-	});
 </script>
 
 <!-- Changes the opacity of sidebar while menu list is displayed -->
@@ -131,41 +122,61 @@ private String getTimeOutput(int tskTime) {
 	<!-- start content -->
 	<div id="content">
 		<div class="post">
+			<%
+				Task task = uspm.getTask(taskId);
+				String description = task.getTskDescription();
+				Set<Comment> comments = task.getComments();
+				Set<WorkLog> worklogs = task.getWorkLogs();
+				User reporter = task.getUserByTskUsrLeaderId();
+				User assignee = task.getUserByTskUsrWorkerId();
+				Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				String taskCreation = formatter.format(task.getTskCreationDate());
+				TaskPriority tskPrio = task.getTaskPriority();
+				String finished;
+				if(task.getTskFinished()) {
+					finished = "Zamkni&#281;ty";
+				} else {
+					finished = "W trakcie realizacji";
+				}
+				String timeLeft = getTimeOutput(task.getTskTime());
+			%>
+			<h1 class="title"><font style="text-transform: capitalize;"><%= taskId %></font></h1>
+			<c:url value="selectPMPanel.jsp" var="editTaskUrl">
+							<c:param name="type" value="5" />
+							<c:param name="userid" value="<%= userId %>" />
+							<c:param name="taskid" value="<%= taskId %>" />
+			</c:url>
+			<a href="${editTaskUrl}">
+				<button>Edytuj</button>
+			</a>
 			<div class="entry">
-				<h2 style="color:green">
-					<font class="capitalize"><%= projectId %></font>
-				</h2><br><br>
-				<p>
-					<table>
-					<thead>
-						<tr>
-							<th><b>Nazwa zadania:  </b></th>
-							<th><b>Osoba odpowiedzialna:  </b></th>
-							<th><b>Przeznaczony czas:</b></th>	
-						</tr>
-					</thead>
-					<tbody>
-					<%
-						List<Task> tasks = uspm.getProjectTasks(projectId);
-						for(Task t : tasks) {
-				          String nazwa = t.getNazwa();
-				          String assignee = t.getUserByTskUsrWorkerId().getUsrName();
-				          String time = getTimeOutput(t.getTskTime());
-						  %>
-						  		<c:url value="selectPMPanel.jsp" var="taskUrl">
-									<c:param name="type" value="4" />
-									<c:param name="taskid" value="<%= nazwa %>" />
-									<c:param name="userid" value="<%= userId %>" />
-								</c:url>
-								<tr class='clickableRow' href="${taskUrl}">
-									<td><%= nazwa %></td>
-									<td><%= assignee %></td>
-									<td><%= time %></td>
-								</tr>		
-						<% } %>
-					</tbody>
-					</table>
-				</p>
+				<h2 style="color:green">Detale</h2><br>
+				<ul id ="limheight" style="list-style-type:none">
+					<li><font face="Impact">Utworzy&#322;:</font></li>
+					<li><%= reporter.getUsrLogin() %></li>
+					
+					<li><font face="Impact">Wykonuje:</font></li>
+					<li><%= assignee.getUsrLogin() %></li>
+				</ul>
+				<ul id ="limheight" style="list-style-type:none">
+					<li><font face="Impact">Data utworzenia:</font></li>
+					<li><%= taskCreation %></li>
+					
+					<li><font face="Impact">Priorytet:</font></li>
+					<li><%= tskPrio.getTprCode() %></li>
+				</ul>
+				<ul id ="limheight" style="list-style-type:none">
+					<li><font face="Impact">Status:</font></li>
+					<li><%= finished %></li>
+					
+					<li><font face="Impact">Przeznaczony czas:</font></li>
+					<li><%= timeLeft %></li>
+				</ul>
+			</div>
+			<h2 class="withup" style="color:green">Opis</h2>
+			
+			<div class="entry">
+				<p><%= description %></p>
 			</div>
 		</div>
 	</div>
