@@ -178,6 +178,22 @@ private String getTimeOutput(int tskTime) {
 			<div class="entry">
 				<p><%= description %></p>
 			</div>
+			<ul class="tabs">
+		        <li>
+		          <input type="radio" checked name="tabs" id="tab1">
+		          <label for="tab1">Komentarze</label>
+		          <div id="tab-content1" class="tab-content animated fadeIn">
+		    		...
+		          </div>
+		        </li>
+		        <li>
+		          <input type="radio" name="tabs" id="tab2">
+		          <label for="tab2">Zapis pracy</label>
+		          <div id="tab-content2" class="tab-content animated fadeIn">
+		            ...
+		          </div>
+		        </li>
+			</ul>
 		</div>
 	</div>
 	<!-- end content -->
