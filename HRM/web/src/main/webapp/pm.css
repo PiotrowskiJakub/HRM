@@ -1,4 +1,5 @@
 body {
+	height: 100%;
 	margin: 100px 0 0 0;
 	padding: 0;
 	background: #FFFFFF url(images/img01.gif) repeat-x;
@@ -205,6 +206,10 @@ tr:last-of-type td:first-child {
 tr:last-of-type td:last-child {
 	box-shadow: inset -1px -1px 0 #fff;
 }	
+
+textarea {
+    resize: none;
+}
 
 /* Header */
 
@@ -451,8 +456,8 @@ tr:last-of-type td:last-child {
 /* Footer */
 
 #footer {
-	height: 250px;
-	min-height: 250px;
+	height: 50px;
+	min-height: 50px;
 	padding: 130px 0 0 0;
 	background: #003448 url(images/img09.gif) repeat-x;
 }

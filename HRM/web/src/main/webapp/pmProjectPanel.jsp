@@ -182,32 +182,6 @@ private String getTimeOutput(int tskTime) {
 </div>
 <!-- end page -->
 
-<!-- start footer -->
-<div id="footer">
-	<div class="wrap">
-		<div id="fbox1" class="box2">
-			<h2><b>PRODUCTS</b></h2>
-			<p><a href="#">HRM</a></p>
-			<p><a href="#">HRM Service Desk</a></p>
-			<p><a href="#">Data Center</a></p>
-			<p><a href="#">Marketplace</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>RESOURCES</b></h2>
-			<p><a href="#">Help</a></p>
-			<p><a href="#">Premier Support</a></p>
-			<p><a href="#">Purchasing FAQ</a></p>
-			<p><a href="#">Documentation</a></p>
-			<p><a href="#">Downloads</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>COMPANY</b></h2>
-			<p><a href="#">Overview</a></p>
-			<p><a href="#">About us</a></p>
-			<p><a href="#">Contact</a></p>
-		</div>
-	</div>
-</div>
-<!-- end footer -->
+<div id="footer"></div>
 </body>
 </html>

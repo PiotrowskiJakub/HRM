@@ -31,6 +31,7 @@ private String getTimeOutput(double tskTime) {
 <%
 	String userId = "";
 	String taskId = (String) session.getAttribute("taskid");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy HH:mm:ss");
 	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
 		response.sendRedirect("index.jsp?login=false");	
 	} else {
@@ -172,27 +173,19 @@ private String getTimeOutput(double tskTime) {
 							<li id="li_tab2" onclick="tab('tab2')"><a>Zapisy pracy</a></li>
 						</ul>
 						<div id="Content_Area">
-							<div id="tab1">
+							<div id="tab1" style="height: auto">
 								<br></br>
 								<% 
 									String comUser = "";
 									String comDate = "";
 									String comText = "";
+									String comId = "";
 									for(Comment c : comments)  {
-										if(c.getUser() != null && c.getUser().getUsrName() != null) 
-											comUser = c.getUser().getUsrName();
-										else 
-											comUser = "";
-										
-										if(c.getComDate() != null && c.getComDate().toLocaleString() != null) 
-											comDate = c.getComDate().toLocaleString();
-										else 
-											comDate = "";
-										
-										if(c.getComComment() != null) 
-											comText = c.getComComment();
-										else 
-											comText = "";
+										comUser = c.getUser().getUsrName();
+										comDate = c.getComDate().toLocaleString();
+										comText = c.getComComment();
+										comId = c.getComId().toString();
+									
 								%> 
 									<c:set var="comUser" value="<%= comUser %>" />
 									<c:set var="comDate" value="<%= comDate %>" />
@@ -207,9 +200,21 @@ private String getTimeOutput(double tskTime) {
 									<jsp:attribute name="text">
 										${comText}
 									</jsp:attribute>
+									<jsp:attribute name="id">
+										${comId}
+									</jsp:attribute>
 									</t:comment>
 									<br></br>
 								<% } %>
+								
+								<!-- Add comment box -->
+								<form action="addComment.jsp" id="usrform">
+								<textarea rows="3" cols="82" name="comcomment" form="usrform">Dodaj komentarz tutaj...</textarea>
+								<input type="hidden" name="comusrid" value="<%= userId %>">
+								<input type="hidden" name="comtaskid" value="<%= taskId %>">
+								<br></br>
+								<input type="submit">
+								</form>
 							</div>
 
 							<div id="tab2" style="display: none;">
@@ -219,26 +224,13 @@ private String getTimeOutput(double tskTime) {
 									String logDate = "";
 									String logText = "";
 									String logTime = "";
+									String logId   = "";
 									for(WorkLog w : worklogs)  {
-										if(w.getUser() != null && w.getUser().getUsrName() != null) 
-											logUser = w.getUser().getUsrName();
-										else 
-											logUser = "";
-										
-										if(w.getWloDate() != null && w.getWloDate().toLocaleString() != null) 
-											logDate = w.getWloDate().toLocaleString();
-										else 
-											logDate = "";
-										
-										if(w.getWloComment() != null) 
-											logText = w.getWloComment();
-										else 
-											logText = "";
-										
-										if(w.getWloTime() != null)
-											logTime = getTimeOutput(w.getWloTime());
-										else
-											logTime = "";
+										logUser = w.getUser().getUsrName();
+										logDate = w.getWloDate().toLocaleString();
+										logText = w.getWloComment();
+										logTime = getTimeOutput(w.getWloTime());
+										logId   = w.getWloId().toString();
 								%> 
 									<c:set var="logUser" value="<%= logUser %>" />
 									<c:set var="logDate" value="<%= logDate %>" />
@@ -256,13 +248,16 @@ private String getTimeOutput(double tskTime) {
 										<br> </br>
 										${logText} 
 									</jsp:attribute>
+									<jsp:attribute name="id">
+										${logId}
+									</jsp:attribute>
 									</t:worklog>
 									<br></br>
 								<% } %>
 							</div>
 						</div>
 					</div>
-					<!-- End of tab -->
+					<!-- End of tab -->	
 				</div>
 			</div>
 		</div>
@@ -288,7 +283,6 @@ private String getTimeOutput(double tskTime) {
 					<li><a href="#">HRM-564</a> Zadanie 4</li>
 					<li><a href="#">HRM-122</a> Zadanie 5</li>
 					<li><a href="#">HRM-345</a> Zadanie 6</li>
-					
 				</ul>
 			</li>
 		</ul>
@@ -298,32 +292,6 @@ private String getTimeOutput(double tskTime) {
 </div>
 <!-- end page -->
 
-<!-- start footer -->
-<div id="footer">
-	<div class="wrap">
-		<div id="fbox1" class="box2">
-			<h2><b>PRODUCTS</b></h2>
-			<p><a href="#">HRM</a></p>
-			<p><a href="#">HRM Service Desk</a></p>
-			<p><a href="#">Data Center</a></p>
-			<p><a href="#">Marketplace</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>RESOURCES</b></h2>
-			<p><a href="#">Help</a></p>
-			<p><a href="#">Premier Support</a></p>
-			<p><a href="#">Purchasing FAQ</a></p>
-			<p><a href="#">Documentation</a></p>
-			<p><a href="#">Downloads</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>COMPANY</b></h2>
-			<p><a href="#">Overview</a></p>
-			<p><a href="#">About us</a></p>
-			<p><a href="#">Contact</a></p>
-		</div>
-	</div>
-</div>
-<!-- end footer -->
+<div id="footer"></div>
 </body>
 </html>

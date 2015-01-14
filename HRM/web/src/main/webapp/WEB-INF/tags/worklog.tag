@@ -2,10 +2,11 @@
 <%@attribute name="createDate" fragment="true"%>
 <%@attribute name="user" fragment="true"%>
 <%@attribute name="text" fragment="true"%>
+<%@attribute name="id" fragment="true"%>
 <html>
 <head>
 <style>
-#body {
+#body2 {
 	color:#555;
     border-radius:10px;
     font-family:Tahoma,Geneva,Arial,sans-serif;
@@ -23,7 +24,7 @@
 		<jsp:invoke fragment="user" />
 		<jsp:invoke fragment="createDate" />
 	</div>
-	<div id="body">
+	<div id="body2">
 		<jsp:invoke fragment="text" />
 	</div>
 </body>
