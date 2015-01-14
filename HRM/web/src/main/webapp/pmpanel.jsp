@@ -3,13 +3,6 @@
 <%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>HRM</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="pm.css" rel="stylesheet" type="text/css" />
 <%
 	String userId = "";
 	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
@@ -19,33 +12,22 @@
 	}
 %>
 
-<!-- Display current time script -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>HRM</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="pm.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-     var auto = setInterval(    function ()
-     {
-          $('#score').load('reload-window.jsp').fadeIn("slow");
-     }, 1000); // refresh every 5000 milliseconds
-</script>
-
-<!-- Changes the opacity of sidebar while menu list is displayed -->
-<script>
-	function lowOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "0.2";
-		document.getElementyById("menu").style.position = "absolute";
-	}
-
-	function normalOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "1.0";
-	}
-</script>
+<script type="text/javascript" src="JS/pmGeneralFunctions.js"></script>
 </head>
 <body>
 
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<h1><a href="#">HRM<sup><font class="uppercase">PM</font></sup></a></h1>
+		<h1><a href="#">hrm<sup>PM</sup></a></h1>
 		<h2><div id="score"></div></h2>
 	</div>
 	<div id="menu">
@@ -99,7 +81,7 @@
 		<div class="post">
 			<div class="entry">
 				<h2 style="color:green">
-					<font class="uppercase">HRM &mdash; </font><font class="capitalize">Human Resource Management</font>
+					HRM &mdash; Human Resource Management
 				</h2><br><br>
 				<p>
 					Witamy na stronie Project Managera!<br>

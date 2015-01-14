@@ -45,7 +45,7 @@
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<h1><a href="#">HRM<sup><font class="uppercase">PM</font></sup></a></h1>
+		<h1><a href="#">hrm<sup>PM</sup></a></h1>
 		<h2><div id="score"></div></h2>
 	</div>
 	<div id="menu">
@@ -99,7 +99,7 @@
 		<div class="post">
 			<div class="entry">
 				<h2 style="color:green">
-					<font class="uppercase">HRM &mdash; </font><font class="capitalize">Human Resource Management</font>
+					HRM &mdash; Human Resource Management
 				</h2><br><br>
 				<p>
 					Employees

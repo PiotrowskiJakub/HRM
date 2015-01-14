@@ -26,13 +26,6 @@ private String getTimeOutput(int tskTime) {
 }
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>HRM</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="pm.css" rel="stylesheet" type="text/css" />
 <%
 	String userId = "";
 	String projectId =(String) session.getAttribute("projectid");
@@ -43,17 +36,17 @@ private String getTimeOutput(int tskTime) {
 	}
 %>
 
-<!-- Display current time script -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>HRM</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="pm.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-     var auto = setInterval(    function ()
-     {
-          $('#score').load('reload-window.jsp').fadeIn("slow");
-     }, 1000); // refresh every 5000 milliseconds
-</script>
+<script type="text/javascript" src="JS/pmGeneralFunctions.js"></script>
 
 <!-- Row in table as link -->
-<script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 	    $(".clickableRow").click(function() {
@@ -61,25 +54,13 @@ private String getTimeOutput(int tskTime) {
 	    });
 	});
 </script>
-
-<!-- Changes the opacity of sidebar while menu list is displayed -->
-<script>
-	function lowOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "0.2";
-		document.getElementyById("menu").style.position = "absolute";
-	}
-
-	function normalOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "1.0";
-	}
-</script>
 </head>
 <body>
 
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<h1><a href="#">HRM<sup><font class="uppercase">PM</font></sup></a></h1>
+		<h1><a href="#">hrm<sup>PM</sup></a></h1>
 		<h2><div id="score"></div></h2>
 	</div>
 	<div id="menu">
@@ -133,7 +114,7 @@ private String getTimeOutput(int tskTime) {
 		<div class="post">
 			<div class="entry">
 				<h2 style="color:green">
-					<font class="capitalize"><%= projectId %></font>
+					<%= projectId %>
 				</h2><br><br>
 				<p>
 					<table>

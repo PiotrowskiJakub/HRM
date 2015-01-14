@@ -4,9 +4,10 @@
 com.hrm.db.model.Task, com.hrm.db.model.Comment, com.hrm.db.model.TaskPriority, com.hrm.db.model.WorkLog,
 com.hrm.db.model.User"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <%!
-private String getTimeOutput(int tskTime) {
+private String getTimeOutput(double tskTime) {
 	String result = "";
 	int minutes = (int) ((tskTime / (1000*60)) % 60);
 	int hours   = (int) ((tskTime / (1000*60*60)) % 24);
@@ -27,13 +28,6 @@ private String getTimeOutput(int tskTime) {
 }
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>HRM</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="pm.css" rel="stylesheet" type="text/css" />
 <%
 	String userId = "";
 	String taskId = (String) session.getAttribute("taskid");
@@ -44,33 +38,23 @@ private String getTimeOutput(int tskTime) {
 	}
 %>
 
-<!-- Display current time script -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>HRM</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="pm.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-     var auto = setInterval(    function ()
-     {
-          $('#score').load('reload-window.jsp').fadeIn("slow");
-     }, 1000); // refresh every 5000 milliseconds
-</script>
+<script type="text/javascript" src="JS/pmGeneralFunctions.js"></script>
 
-<!-- Changes the opacity of sidebar while menu list is displayed -->
-<script>
-	function lowOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "0.2";
-		document.getElementyById("menu").style.position = "absolute";
-	}
-
-	function normalOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "1.0";
-	}
-</script>
 </head>
 <body>
 
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<h1><a href="#">HRM<sup><font class="uppercase">PM</font></sup></a></h1>
+		<h1><a href="#">hrm<sup>PM</sup></a></h1>
 		<h2><div id="score"></div></h2>
 	</div>
 	<div id="menu">
@@ -121,8 +105,8 @@ private String getTimeOutput(int tskTime) {
 <div id="page">
 	<!-- start content -->
 	<div id="content">
-		<div class="post">
-			<%
+			<div class="post">
+				<%
 				Task task = uspm.getTask(taskId);
 				String description = task.getTskDescription();
 				Set<Comment> comments = task.getComments();
@@ -140,62 +124,148 @@ private String getTimeOutput(int tskTime) {
 				}
 				String timeLeft = getTimeOutput(task.getTskTime());
 			%>
-			<h1 class="title"><font style="text-transform: capitalize;"><%= taskId %></font></h1>
-			<c:url value="selectPMPanel.jsp" var="editTaskUrl">
-							<c:param name="type" value="5" />
-							<c:param name="userid" value="<%= userId %>" />
-							<c:param name="taskid" value="<%= taskId %>" />
-			</c:url>
-			<a href="${editTaskUrl}">
-				<button>Edytuj</button>
-			</a>
-			<div class="entry">
-				<h2 style="color:green">Detale</h2><br>
-				<ul id ="limheight" style="list-style-type:none">
-					<li><font face="Impact">Utworzy&#322;:</font></li>
-					<li><%= reporter.getUsrLogin() %></li>
-					
-					<li><font face="Impact">Wykonuje:</font></li>
-					<li><%= assignee.getUsrLogin() %></li>
-				</ul>
-				<ul id ="limheight" style="list-style-type:none">
-					<li><font face="Impact">Data utworzenia:</font></li>
-					<li><%= taskCreation %></li>
-					
-					<li><font face="Impact">Priorytet:</font></li>
-					<li><%= tskPrio.getTprCode() %></li>
-				</ul>
-				<ul id ="limheight" style="list-style-type:none">
-					<li><font face="Impact">Status:</font></li>
-					<li><%= finished %></li>
-					
-					<li><font face="Impact">Przeznaczony czas:</font></li>
-					<li><%= timeLeft %></li>
-				</ul>
+				<h1 class="title"><%= taskId %></h1>
+				<c:url value="selectPMPanel.jsp" var="editTaskUrl">
+					<c:param name="type" value="5" />
+					<c:param name="userid" value="<%= userId %>" />
+					<c:param name="taskid" value="<%= taskId %>" />
+				</c:url>
+				<a href="${editTaskUrl}">
+					<button>Edytuj</button>
+				</a>
+				<div class="entry">
+					<h2 style="color: green">Detale</h2>
+					<br>
+						<ul id="limheight" style="list-style-type: none">
+							<li><font face="Impact">Utworzy&#322;:</font></li>
+							<li><%= reporter.getUsrLogin() %></li>
+
+							<li><font face="Impact">Wykonuje:</font></li>
+							<li><%= assignee.getUsrLogin() %></li>
+						</ul>
+						<ul id="limheight" style="list-style-type: none">
+							<li><font face="Impact">Data utworzenia:</font></li>
+							<li><%= taskCreation %></li>
+
+							<li><font face="Impact">Priorytet:</font></li>
+							<li><%= tskPrio.getTprCode() %></li>
+						</ul>
+						<ul id="limheight" style="list-style-type: none">
+							<li><font face="Impact">Status:</font></li>
+							<li><%= finished %></li>
+
+							<li><font face="Impact">Przeznaczony czas:</font></li>
+							<li><%= timeLeft %></li>
+						</ul>
+
+				</div>
+				<h2 class="withup" style="color: green">Opis</h2>
+
+				<div class="entry">
+					<p><%= description %></p><br></br>
+				</div>
+				<div class="entry">
+					<!-- Tabs -->
+					<div id="Tabs">
+						<ul>
+							<li id="li_tab1" onclick="tab('tab1')"><a>Komentarze</a></li>
+							<li id="li_tab2" onclick="tab('tab2')"><a>Zapisy pracy</a></li>
+						</ul>
+						<div id="Content_Area">
+							<div id="tab1">
+								<br></br>
+								<% 
+									String comUser = "";
+									String comDate = "";
+									String comText = "";
+									for(Comment c : comments)  {
+										if(c.getUser() != null && c.getUser().getUsrName() != null) 
+											comUser = c.getUser().getUsrName();
+										else 
+											comUser = "";
+										
+										if(c.getComDate() != null && c.getComDate().toLocaleString() != null) 
+											comDate = c.getComDate().toLocaleString();
+										else 
+											comDate = "";
+										
+										if(c.getComComment() != null) 
+											comText = c.getComComment();
+										else 
+											comText = "";
+								%> 
+									<c:set var="comUser" value="<%= comUser %>" />
+									<c:set var="comDate" value="<%= comDate %>" />
+									<c:set var="comText" value="<%= comText %>" />
+									<t:comment>
+									<jsp:attribute name="user">
+										<b> ${comUser} </b>
+									</jsp:attribute>
+									<jsp:attribute name="createDate">
+										${comDate}
+									</jsp:attribute>
+									<jsp:attribute name="text">
+										${comText}
+									</jsp:attribute>
+									</t:comment>
+									<br></br>
+								<% } %>
+							</div>
+
+							<div id="tab2" style="display: none;">
+								<br></br>
+								<% 
+									String logUser = "";
+									String logDate = "";
+									String logText = "";
+									String logTime = "";
+									for(WorkLog w : worklogs)  {
+										if(w.getUser() != null && w.getUser().getUsrName() != null) 
+											logUser = w.getUser().getUsrName();
+										else 
+											logUser = "";
+										
+										if(w.getWloDate() != null && w.getWloDate().toLocaleString() != null) 
+											logDate = w.getWloDate().toLocaleString();
+										else 
+											logDate = "";
+										
+										if(w.getWloComment() != null) 
+											logText = w.getWloComment();
+										else 
+											logText = "";
+										
+										if(w.getWloTime() != null)
+											logTime = getTimeOutput(w.getWloTime());
+										else
+											logTime = "";
+								%> 
+									<c:set var="logUser" value="<%= logUser %>" />
+									<c:set var="logDate" value="<%= logDate %>" />
+									<c:set var="logText" value="<%= logText %>" />
+									<c:set var="logTime" value="<%= logTime %>" />
+									<t:worklog>
+									<jsp:attribute name="user">
+										<b> ${logUser} </b>
+									</jsp:attribute>
+									<jsp:attribute name="createDate">
+										${logDate}
+									</jsp:attribute>
+									<jsp:attribute name="text">
+										<b>Czas:</b> ${logTime}
+										<br> </br>
+										${logText} 
+									</jsp:attribute>
+									</t:worklog>
+									<br></br>
+								<% } %>
+							</div>
+						</div>
+					</div>
+					<!-- End of tab -->
+				</div>
 			</div>
-			<h2 class="withup" style="color:green">Opis</h2>
-			
-			<div class="entry">
-				<p><%= description %></p>
-			</div>
-			<ul class="tabs">
-		        <li>
-		          <input type="radio" checked name="tabs" id="tab1">
-		          <label for="tab1">Komentarze</label>
-		          <div id="tab-content1" class="tab-content animated fadeIn">
-		    		...
-		          </div>
-		        </li>
-		        <li>
-		          <input type="radio" name="tabs" id="tab2">
-		          <label for="tab2">Zapis pracy</label>
-		          <div id="tab-content2" class="tab-content animated fadeIn">
-		            ...
-		          </div>
-		        </li>
-			</ul>
 		</div>
-	</div>
 	<!-- end content -->
 	
 	<!-- start sidebar -->
