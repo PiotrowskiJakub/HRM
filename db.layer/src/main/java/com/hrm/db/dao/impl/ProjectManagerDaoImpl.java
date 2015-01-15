@@ -10,9 +10,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hrm.db.dao.ProjectManagerDao;
+import com.hrm.db.model.Comment;
 import com.hrm.db.model.Project;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
+import com.hrm.db.model.WorkLog;
 
 @Repository
 @Transactional(propagation=Propagation.REQUIRED)
@@ -39,5 +41,25 @@ public class ProjectManagerDaoImpl implements ProjectManagerDao
 	public Project getProject(String name)
 	{
 		return (Project) sf.getCurrentSession().createCriteria(Project.class).add(Restrictions.eq("prjName", name)).uniqueResult();
+	}
+
+	public Task getTask(String login)
+	{
+		return (Task) sf.getCurrentSession().createCriteria(Task.class).add(Restrictions.eq("nazwa", login)).uniqueResult();
+	}
+	
+	public void editTask(Task task)
+	{
+		sf.getCurrentSession().update(task);
+	}
+
+	public void addComment(Comment comment)
+	{
+		sf.getCurrentSession().save(comment);
+	}
+
+	public void addWorkLog(WorkLog workLog)
+	{
+		sf.getCurrentSession().save(workLog);
 	}
 }
