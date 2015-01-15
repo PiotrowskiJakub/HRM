@@ -6,18 +6,18 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.hrm.DaoInitializer;
-import com.hrm.db.dao.AdminDao;
+import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Project;
 import com.hrm.db.model.Task;
 
 public class UserProjectsManagement {
-	private AdminDao adminDao;
+	private ProjectManagerDao adminDao;
 	private String login;
 	private List<Project> projects;
 	
 	
 	public UserProjectsManagement(String login){
-		this.adminDao = DaoInitializer.getDao(AdminDao.class);
+		this.adminDao = DaoInitializer.getDao(ProjectManagerDao.class);
 		this.login = login;
 		this.projects = new ArrayList<Project>(
 				adminDao.getUserProjects(this.login));

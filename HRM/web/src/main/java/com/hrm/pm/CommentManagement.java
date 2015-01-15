@@ -3,13 +3,13 @@ package com.hrm.pm;
 import java.util.Date;
 
 import com.hrm.DaoInitializer;
-import com.hrm.db.dao.AdminDao;
+import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Comment;
 import com.hrm.db.model.User;
 
 public class CommentManagement {
 	
-	private AdminDao adminDao;
+	private ProjectManagerDao adminDao;
 	private String comid;
 	private String comtaskid;
 	private String comusrid;
@@ -18,7 +18,7 @@ public class CommentManagement {
 	
 	
 	public CommentManagement(){
-		adminDao = DaoInitializer.getDao(AdminDao.class);
+		adminDao = DaoInitializer.getDao(ProjectManagerDao.class);
 		comid = "";
 		comtaskid = "";
 		comusrid = "";

@@ -48,6 +48,16 @@ private String getTimeOutput(double tskTime) {
 <link href="pm.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="JS/pmGeneralFunctions.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
+
 
 </head>
 <body>
@@ -125,142 +135,30 @@ private String getTimeOutput(double tskTime) {
 				}
 				String timeLeft = getTimeOutput(task.getTskTime());
 			%>
-				<h1 class="title"><%= taskId %></h1>
-				<c:url value="selectPMPanel.jsp" var="editTaskUrl">
-					<c:param name="type" value="5" />
-					<c:param name="userid" value="<%= userId %>" />
-					<c:param name="taskid" value="<%= taskId %>" />
-				</c:url>
-				<a href="${editTaskUrl}">
-					<button>Edytuj</button>
-				</a>
-				<div class="entry">
-					<h2 style="color: green">Detale</h2>
-					<br>
-						<ul id="limheight" style="list-style-type: none">
-							<li><font face="Impact">Utworzy&#322;:</font></li>
-							<li><%= reporter.getUsrLogin() %></li>
-
-							<li><font face="Impact">Wykonuje:</font></li>
-							<li><%= assignee.getUsrLogin() %></li>
-						</ul>
-						<ul id="limheight" style="list-style-type: none">
-							<li><font face="Impact">Data utworzenia:</font></li>
-							<li><%= taskCreation %></li>
-
-							<li><font face="Impact">Priorytet:</font></li>
-							<li><%= tskPrio.getTprCode() %></li>
-						</ul>
-						<ul id="limheight" style="list-style-type: none">
-							<li><font face="Impact">Status:</font></li>
-							<li><%= finished %></li>
-
-							<li><font face="Impact">Przeznaczony czas:</font></li>
-							<li><%= timeLeft %></li>
-						</ul>
-
-				</div>
-				<h2 class="withup" style="color: green">Opis</h2>
-
-				<div class="entry">
-					<p><%= description %></p><br></br>
-				</div>
-				<div class="entry">
-					<!-- Tabs -->
-					<div id="Tabs">
-						<ul>
-							<li id="li_tab1" onclick="tab('tab1')"><a>Komentarze</a></li>
-							<li id="li_tab2" onclick="tab('tab2')"><a>Zapisy pracy</a></li>
-						</ul>
-						<div id="Content_Area">
-							<div id="tab1" style="height: auto">
-								<br></br>
-								<% 
-									String comUser = "";
-									String comDate = "";
-									String comText = "";
-									String comId = "";
-									for(Comment c : comments)  {
-										comUser = c.getUser().getUsrName();
-										comDate = c.getComDate().toLocaleString();
-										comText = c.getComComment();
-										comId = c.getComId().toString();
-									
-								%> 
-									<c:set var="comUser" value="<%= comUser %>" />
-									<c:set var="comDate" value="<%= comDate %>" />
-									<c:set var="comText" value="<%= comText %>" />
-									<t:comment>
-									<jsp:attribute name="user">
-										<b> ${comUser} </b>
-									</jsp:attribute>
-									<jsp:attribute name="createDate">
-										${comDate}
-									</jsp:attribute>
-									<jsp:attribute name="text">
-										${comText}
-									</jsp:attribute>
-									<jsp:attribute name="id">
-										${comId}
-									</jsp:attribute>
-									</t:comment>
-									<br></br>
-								<% } %>
-								
-								<!-- Add comment box -->
-								<form action="addComment.jsp" id="usrform">
-								<textarea rows="3" cols="82" name="comcomment" form="usrform">Dodaj komentarz tutaj...</textarea>
-								<input type="hidden" name="comusrid" value="<%= userId %>">
-								<input type="hidden" name="comtaskid" value="<%= taskId %>">
-								<br></br>
-								<input type="submit">
-								</form>
-							</div>
-
-							<div id="tab2" style="display: none;">
-								<br></br>
-								<% 
-									String logUser = "";
-									String logDate = "";
-									String logText = "";
-									String logTime = "";
-									String logId   = "";
-									for(WorkLog w : worklogs)  {
-										logUser = w.getUser().getUsrName();
-										logDate = w.getWloDate().toLocaleString();
-										logText = w.getWloComment();
-										logTime = getTimeOutput(w.getWloTime());
-										logId   = w.getWloId().toString();
-								%> 
-									<c:set var="logUser" value="<%= logUser %>" />
-									<c:set var="logDate" value="<%= logDate %>" />
-									<c:set var="logText" value="<%= logText %>" />
-									<c:set var="logTime" value="<%= logTime %>" />
-									<t:worklog>
-									<jsp:attribute name="user">
-										<b> ${logUser} </b>
-									</jsp:attribute>
-									<jsp:attribute name="createDate">
-										${logDate}
-									</jsp:attribute>
-									<jsp:attribute name="text">
-										<b>Czas:</b> ${logTime}
-										<br> </br>
-										${logText} 
-									</jsp:attribute>
-									<jsp:attribute name="id">
-										${logId}
-									</jsp:attribute>
-									</t:worklog>
-									<br></br>
-								<% } %>
-								<!-- Add worklog box -->
-								<form action="addWorklogForm.jsp" id="usrform">
-								<input type="submit" value="Dodaj">
-							</div>
-						</div>
-					</div>
-					<!-- End of tab -->	
+				<h1 class="title"><%= taskId %> dodaj zapis pracy</h1>
+				<div class="editForm">
+					<form id="formCheck" action="addWorklog.jsp" method="POST">
+						<table>
+							<input type="hidden" name="wloUser"><%= userId %></input>
+							<input type="hidden" name="wloTask"><%= taskId %></input>
+							<tr>
+								<td>Ile czasu:</td>
+								<td><input type="text" name="wloTime"></td>
+							</tr>
+							<tr>
+								<td>Data rozpocz&#281;cia:</td>
+								<td><input type="text" id="datepicker" name="wloDate"></input></td>
+							</tr>
+							<tr>
+								<td>Komentarz:</td>
+								<td><input type="text" name="wloComment"></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: right;"><input
+									type="submit" value="Dodaj" /></td>
+							</tr>
+						</table>
+					</form>
 				</div>
 			</div>
 		</div>
