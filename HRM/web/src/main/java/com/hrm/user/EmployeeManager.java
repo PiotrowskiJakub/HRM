@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.hrm.DaoInitializer;
 import com.hrm.db.dao.EmployeeDao;
+import com.hrm.db.model.Comment;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
 
@@ -32,12 +33,29 @@ public class EmployeeManager {
 	
 	public String getEmail(){
 		return user.getUsrEmail();
+		
+	}
+	
+//	public String getFullName(Integer id){
+//		return employeeDao.getUser(id).getUsrName() + " " + employeeDao.getUser(id).getUsrSurname();
+//	}
+	
+	public Set<Task> getAllTasks(){
+		return employeeDao.getUserTasks(loginName);
+	}
+	
+	public Set<Comment> getAllComentsToTask(Integer id){
+		return employeeDao.getTaskComments(id);
+	}
+	
+	public Set<Comment> getAllComents(){
+		return employeeDao.getUserComments(loginName);
 	}
 	
 	public Set<Map.Entry<String,Integer[]>> getAllTitlesTask(){
 		HashMap<String, Integer[]> tmp = new HashMap<String, Integer[]>();
 		Date now = new Date();
-		for(Task currentTask : employeeDao.getUserTasks(loginName)){
+		for(Task currentTask : getAllTasks()){
 			Integer [] tmpInt = {
 					employeeDao.getTaskComments(currentTask.getTskId()).size(),
 					(int)((now.getTime() - currentTask.getTskCreationDate().getTime())/(1000*60))
@@ -83,6 +101,7 @@ public class EmployeeManager {
 		}
 		
 	}
+	
 	
 	
 	

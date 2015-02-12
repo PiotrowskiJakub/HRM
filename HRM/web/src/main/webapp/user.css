@@ -368,12 +368,14 @@ input, textarea, select {
 .account{
 	width: 330px;
 	min-height:400px;
+	max-height:500px;
 	position:relative;
 }
 .move_account{
 	width:330px;
 	position:fixed;
 	min-height: 300px;
+	
 	background: #f0f0f0;
 }
 .title{

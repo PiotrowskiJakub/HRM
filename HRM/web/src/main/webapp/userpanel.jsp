@@ -1,3 +1,6 @@
+<%@page import="com.hrm.db.model.Comment"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.hrm.db.model.Task"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.Set"%>
 <%@page import="com.hrm.user.EmployeeManager"%>
@@ -103,61 +106,104 @@ if(employeeManager == null){
    			</select>
    			<div class="clear" style="height: 10px;"></div>
    			
+   			
+   			<% for(Task currentTask : employeeManager.getAllTasks()){ 
+   						%>
+   			
+   				
+   			
+   		
    			<!-- task container -->
    			<div class="main_task">
    				<div class="main_task_avatar"><img src="images/avatars/user.png" /></div>
    				<div class="main_task_description">
-   					<div class="main_task_description_who">Konrad Hopek 6/17/2014 5:58</div>
-   					<div class="main_task_description_desc">zadanie 1</div>
+   					<div class="main_task_description_who"><%=currentTask.getUserByTskUsrLeaderId().getUsrName() + " " + currentTask.getUserByTskUsrLeaderId().getUsrSurname() %> 
+   					<%
+   					Date dataTask = currentTask.getTskCreationDate();
+   					String dataString = dataTask.getDay() + "/" + (dataTask.getMonth()+1) + "/" + (dataTask.getYear()+ 1900) + " " + dataTask.getHours() + ":" + dataTask.getMinutes();
+   					out.println(dataTask);
+   					%></div>
+   					<div class="main_task_description_desc"><%=currentTask.getNazwa() %></div>
+   					<div class="main_task_description"><%=currentTask.getTskDescription() %></div>
    				</div>
-   				<div class="main_task_icon"><img src="images/task/task_done.png" /></div>
+   				<div class="main_task_icon">
+   				
+   				<% if(currentTask.getTskFinished()){ %>
+   				<img src="images/task/task_done.png" />
+   				<% }else{ %>
+   				<img src="images/task/task_undone.png" />
+   				<% } %>
+   				</div>
    				
    				<div class="clear" style="height: 10px"></div>
+   				<% Set<Comment> comments = employeeManager.getAllComentsToTask(currentTask.getTskId()); %>
    				
+   				<% if(comments.size() > 1 ){ %>
    				<div class="show_more_comments">
-   					<div class="how_much">7 komentarzy wiecej</div>
+   					<div class="how_much"><%=(comments.size() - 1)%> komentarzy wiecej</div>
    					<div class="show right tigger"><a>pokaz <img src="images/task/more.png" /></a></div>
    				</div>
+   				<% } %>
    				
-   				<div class="comments_hidden" >   				
-	   					<div class="comment">
+   				<div class="comments_hidden" >
+   						<% 
+   						int last = 0;
+   						for (Comment currentComment : comments){
+   							System.out.println("last: " + last );
+   							if(last == comments.size() - 1 ){
+   								System.out.println("system last");
+   						%>
+   						
+   						
+   						<div class="clear"></div>
+   						</div>
+   						<div class="comments">
+   						<div class="comment">
 			   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
 			   				<div class="comment_description">
-			   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
+			   					<div class="comment_who"><%= currentComment.getUser().getUsrName() + " " + currentComment.getUser().getUsrSurname() %>
+			   					<%=currentComment.getComDate() %>
+			   					</div>
 			   					<div class="comment_description_desc">
-			   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
+			   						<%=currentComment.getComComment() %> 
+			   					</div>
+			   				</div>
+	   					</div>
+	   					
+   						<%		
+   							}else{
+   						%>
+   						<div class="comment">
+			   				<div class="comment_avatar">
+			   				<% if(currentComment.getUser().getRole().getRolId() == 1){ %>
+			   				<img src="images/avatars/user.png" width="35" height="35" />
+			   				<% }else if(currentComment.getUser().getRole().getRolId() == 2){ %>
+			   				<img src="images/avatars/user.png" width="35" height="35" />
+			   				<% }else if(currentComment.getUser().getRole().getRolId() == 3){ %>
+			   				<img src="images/avatars/user.png" width="35" height="35" />
+			   				<% } %>
+			   				</div>
+			   				<div class="comment_description">
+			   					<div class="comment_who"><%= currentComment.getUser().getUsrName() + " " + currentComment.getUser().getUsrSurname() %>
+			   					<%=currentComment.getComDate() %>
+			   					</div>
+			   					<div class="comment_description_desc">
+			   						<%=currentComment.getComComment() %> 
 			   					</div>
 			   				</div>
 		   				</div>
 		   				
 		   				<div class="clear"></div>
 		   				
-		  				<div class="comment">
-			   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-			   				<div class="comment_description">
-			   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-			   					<div class="comment_description_desc">
-			   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-			   					</div>
-			   				</div>
-		   				</div>
-		   				
-		   				<div class="clear"></div>
-	   				</div>
-   				
-   				<div class="comments">
-   					
-	   				
-	  				<div class="comment">
-		   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-		   				<div class="comment_description">
-		   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-		   					<div class="comment_description_desc">
-		   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-		   					</div>
-		   				</div>
-	   				</div>
-   			
+		   				<%
+   								
+   							}
+   							last++;
+   						
+   						}
+   						
+   						%>
+   						
    				</div>
    				
    				<div class="clear"></div>
@@ -173,147 +219,8 @@ if(employeeManager == null){
 		<div class="clear" style="height:27px;"></div>
 		<!-- end task container -->
 		
-		
-		<!-- task container -->
-   			<div class="main_task">
-   				<div class="main_task_avatar"><img src="images/avatars/user.png" /></div>
-   				<div class="main_task_description">
-   					<div class="main_task_description_who">Konrad Hopek 6/17/2014 5:58</div>
-   					<div class="main_task_description_desc">Zadanie drugie</div>
-   				</div>
-   				<div class="main_task_icon"><img src="images/task/task_undone.png" /></div>
-   				
-   				<div class="clear" style="height: 10px"></div>
-   				
-   				<div class="show_more_comments">
-   					<div class="how_much">7 komentarzy wiecej</div>
-   					<div class="show right tigger"><a>pokaz <img src="images/task/more.png" /></a></div>
-   				</div>
-   				
-   				<div class="comments_hidden" >   				
-	   					<div class="comment">
-			   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-			   				<div class="comment_description">
-			   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-			   					<div class="comment_description_desc">
-			   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-			   					</div>
-			   				</div>
-		   				</div>
-		   				
-		   				<div class="clear"></div>
-		   				
-		  				<div class="comment">
-			   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-			   				<div class="comment_description">
-			   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-			   					<div class="comment_description_desc">
-			   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-			   					</div>
-			   				</div>
-		   				</div>
-		   				
-		   				<div class="clear"></div>
-	   				</div>
-   				
-   				<div class="comments">
-   					
-	   				
-	  				<div class="comment">
-		   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-		   				<div class="comment_description">
-		   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-		   					<div class="comment_description_desc">
-		   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-		   					</div>
-		   				</div>
-	   				</div>
-   			
-   				</div>
-   				
-   				<div class="clear"></div>
-   				
-   				<div class="add_comment">
-	   				<input type="text" value="Wpisz komentarz..." 
-						onclick="if(this.value=='Wpisz komentarz...'){this.value=''}" 
-	   					onblur="if(this.value==''){this.value='Wpisz komentarz...'}"/>
-	   				<img onclick="add_comment()" src ="images/task/send_comment.png" />
-   				</div>
-   			
-		</div>
-		<div class="clear" style="height:27px;"></div>
-		<!-- end task container -->
-		
-		
-		<!-- task container -->
-   			<div class="main_task">
-   				<div class="main_task_avatar"><img src="images/avatars/user.png" /></div>
-   				<div class="main_task_description">
-   					<div class="main_task_description_who">Konrad Hopek 6/17/2014 5:58</div>
-   					<div class="main_task_description_desc">Zrobic layout</div>
-   				</div>
-   				<div class="main_task_icon"><img src="images/task/task_done.png" /></div>
-   				
-   				<div class="clear" style="height: 10px"></div>
-   				
-   				<div class="show_more_comments">
-   					<div class="how_much">7 komentarzy wiecej</div>
-   					<div class="show right tigger"><a>pokaz <img src="images/task/more.png" /></a></div>
-   				</div>
-   				
-   				<div class="comments_hidden" >   				
-	   					<div class="comment">
-			   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-			   				<div class="comment_description">
-			   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-			   					<div class="comment_description_desc">
-			   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-			   					</div>
-			   				</div>
-		   				</div>
-		   				
-		   				<div class="clear"></div>
-		   				
-		  				<div class="comment">
-			   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-			   				<div class="comment_description">
-			   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-			   					<div class="comment_description_desc">
-			   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-			   					</div>
-			   				</div>
-		   				</div>
-		   				
-		   				<div class="clear"></div>
-	   				</div>
-   				
-   				<div class="comments">
-   					
-	   				
-	  				<div class="comment">
-		   				<div class="comment_avatar"><img src="images/avatars/user.png" width="35" height="35" /></div>
-		   				<div class="comment_description">
-		   					<div class="comment_who">Konrad Hopek 6/17/2014 5:58</div>
-		   					<div class="comment_description_desc">
-		   						Zrobic layout loream ipspidum Zrobic layout loream ipspidum Zrobic layout loream ipspidum 
-		   					</div>
-		   				</div>
-	   				</div>
-   			
-   				</div>
-   				
-   				<div class="clear"></div>
-   				
-   				<div class="add_comment">
-	   				<input type="text" value="Wpisz komentarz..." 
-						onclick="if(this.value=='Wpisz komentarz...'){this.value=''}" 
-	   					onblur="if(this.value==''){this.value='Wpisz komentarz...'}"/>
-	   				<img onclick="add_comment()" src ="images/task/send_comment.png" />
-   				</div>
-   			
-		</div>
-		<div class="clear" style="height:27px;"></div>
-		<!-- end task container -->
+			<% } %>
+			
 	
 		
 		
