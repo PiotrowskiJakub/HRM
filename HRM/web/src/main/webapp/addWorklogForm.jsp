@@ -21,7 +21,7 @@ private String getTimeOutput(double tskTime) {
 	} if(hours > 0) {
 		result += hours + "h ";
 	} if(minutes > 0) {
-		result += minutes + "min ";
+		result += minutes + "m ";
 	}
 	
 	return result;
@@ -56,6 +56,12 @@ private String getTimeOutput(double tskTime) {
 	$(function() {
 		$("#datepicker").datepicker();
 	});
+
+	var Msg ='<%=session.getAttribute("getAlert")%>';
+	if (Msg == "Yes") {
+		alert("Niepoprawne dane, operacja przerwana."); 
+		<% session.setAttribute("getAlert", "No"); %>
+	}
 </script>
 
 
@@ -139,15 +145,25 @@ private String getTimeOutput(double tskTime) {
 				<div class="editForm">
 					<form id="formCheck" action="addWorklog.jsp" method="POST">
 						<table>
-							<input type="hidden" name="wloUser"><%= userId %></input>
-							<input type="hidden" name="wloTask"><%= taskId %></input>
 							<tr>
-								<td>Ile czasu:</td>
-								<td><input type="text" name="wloTime"></td>
+								<td>U&#380;ytkownik:</td>
+								<td><input type="hidden" name="wloUser" value=<%= userId %>><%= userId %></input></td>
 							</tr>
+							<tr>
+								<td>Zadanie:</td>
+								<td><input type="hidden" name="wloTask" value=<%= taskId %>><%= taskId %></input></td>
+							</tr>							
 							<tr>
 								<td>Data rozpocz&#281;cia:</td>
 								<td><input type="text" id="datepicker" name="wloDate"></input></td>
+							</tr>
+							<tr>
+								<td>Liczba godzin:</td>
+								<td><input type="text" name="wloHours"></td>
+							</tr>
+							<tr>
+								<td>Liczba minut:</td>
+								<td><input type="text" name="wloMinutes"></td>
 							</tr>
 							<tr>
 								<td>Komentarz:</td>
