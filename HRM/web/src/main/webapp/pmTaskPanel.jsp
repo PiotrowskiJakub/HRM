@@ -21,7 +21,7 @@ private String getTimeOutput(double tskTime) {
 	} if(hours > 0) {
 		result += hours + "h ";
 	} if(minutes > 0) {
-		result += minutes + "min ";
+		result += minutes + "m ";
 	}
 	
 	return result;
@@ -227,7 +227,9 @@ private String getTimeOutput(double tskTime) {
 									String logId   = "";
 									for(WorkLog w : worklogs)  {
 										logUser = w.getUser().getUsrName();
-										logDate = w.getWloDate().toLocaleString();
+										Date d = w.getWloDate();
+										SimpleDateFormat sdff = new SimpleDateFormat("dd/MM/yyyy");
+										logDate = sdff.format(d);
 										logText = w.getWloComment();
 										logTime = getTimeOutput(w.getWloTime());
 										logId   = w.getWloId().toString();
