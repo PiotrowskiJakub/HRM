@@ -2,6 +2,16 @@
 <%@page import="com.hrm.db.model.Section, com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User, com.hrm.db.model.Role"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
+<%
+	String userId = "";
+	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+		response.sendRedirect("index.jsp?login=false");	
+	} else {
+		userId = (String) session.getAttribute("userid");
+	}
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,14 +52,20 @@
 				<li><a href="#">Strona Startowa</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
-						<li><a href="#">Dodaj uzytkownika</a></li>
+						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
 						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
-				<li><a href="#">Zarzadzaj projektami</a></li>
+				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Zarzadzaj projektami</a>
+					<ul>
+						<li><a href="allProjectsForm.jsp">Pokaz projekty</a></li>
+						<li><a href="addProjectForm.jsp">Dodaj projekt</a></li>
+					</ul>
+				</li>
+				<li><a href="logout.jsp">Wyloguj</a></li>
 			</ul>
 
 			
-		</div>
+	</div>
 </div>
 <!-- end header -->
 

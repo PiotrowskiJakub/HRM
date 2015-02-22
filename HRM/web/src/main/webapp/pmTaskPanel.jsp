@@ -126,7 +126,9 @@ private String getTimeOutput(double tskTime) {
 				String timeLeft = getTimeOutput(task.getTskTime());
 			%>
 				<h1 class="title"><%= taskId %></h1>
-				<c:url value="editTaskPanel.jsp" var="editTaskUrl">
+				<c:url value="selectPMPanel.jsp" var="editTaskUrl">
+					<c:param name="type" value="5" />
+					<c:param name="userid" value="<%= userId %>" />
 					<c:param name="taskid" value="<%= taskId %>" />
 				</c:url>
 				<a href="${editTaskUrl}">
