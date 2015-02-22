@@ -754,3 +754,11 @@
 2015-02-22 14:36:57,901 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2015-02-22 14:36:57,908 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-02-22 14:36:57,908 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\web\src\test\resources
+2015-02-22 14:41:16,506 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:41:16,506 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:41:16,508 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:41:16,508 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:42:07,154 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:42:07,155 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:42:07,158 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:42:07,158 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources

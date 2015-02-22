@@ -63,6 +63,11 @@ public class AdminDaoImpl implements AdminDao
 		return (Section) sf.getCurrentSession().createCriteria(Section.class).add(Restrictions.eq("secName", name)).uniqueResult();
 	}
 	
+	public Project getProject(String name) 
+	{
+		return (Project) sf.getCurrentSession().createCriteria(Project.class).add(Restrictions.eq("prjName", name)).uniqueResult();
+	}
+	
 	public void addProject(Project project) 
 	{
 		sf.getCurrentSession().save(project);
