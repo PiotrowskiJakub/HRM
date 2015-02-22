@@ -63,6 +63,31 @@ public class AdminDaoImpl implements AdminDao
 		return (Section) sf.getCurrentSession().createCriteria(Section.class).add(Restrictions.eq("secName", name)).uniqueResult();
 	}
 	
+	public Project getProject(String name) 
+	{
+		return (Project) sf.getCurrentSession().createCriteria(Project.class).add(Restrictions.eq("prjName", name)).uniqueResult();
+	}
+	
+	public void addProject(Project project) 
+	{
+		sf.getCurrentSession().save(project);
+	}
+	
+	public void deleteProject(String name) 
+	{
+		Project project = (Project) sf.getCurrentSession().createCriteria(Project.class).add(Restrictions.eq("prjName", name)).uniqueResult();
+		if(project == null)
+			return;
+		for(Task t : project.getTasks())
+			sf.getCurrentSession().delete(t);
+		sf.getCurrentSession().delete(project);
+	}
+	
+	public void editProject(Project project) 
+	{
+		sf.getCurrentSession().update(project);
+	}
+	
 	public void addUser(User user)
 	{
 		sf.getCurrentSession().save(user);
@@ -82,6 +107,12 @@ public class AdminDaoImpl implements AdminDao
 	public void editUser(User user)
 	{
 		sf.getCurrentSession().update(user);
+	}
+	
+	public List<Project> getProjects() 
+	{
+		Criteria crt = sf.getCurrentSession().createCriteria(Project.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return (List<Project>) crt.list();
 	}
 	
 	public Set<Project> getUserProjects(String login)
