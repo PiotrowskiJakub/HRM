@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "work_logs", catalog = "sbatko1")
-public class WorkLog implements java.io.Serializable
+public class WorkLog implements java.io.Serializable, Comparable<WorkLog>
 {
 
 	private Integer wloId;
@@ -121,9 +121,9 @@ public class WorkLog implements java.io.Serializable
 		this.wloTime = wloTime;
 	}
 
-	//public int compareTo(Date o)
-	//{
-	//	return this.wloDate.compareTo(o);
-	//}
+	public int compareTo(WorkLog wl)
+	{
+		return this.wloDate.compareTo(wl.getWloDate());
+	}
 
 }

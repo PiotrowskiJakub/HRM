@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "comments", catalog = "sbatko1")
-public class Comment implements java.io.Serializable
+public class Comment implements java.io.Serializable, Comparable<Comment>
 {
 
 	private Integer comId;
@@ -105,8 +105,8 @@ public class Comment implements java.io.Serializable
 		this.comDate = comDate;
 	}
 
-	//public int compareTo(Date o)
-	//{
-	//	return this.comDate.compareTo(o);
-	//}
+	public int compareTo(Comment com)
+	{
+		return this.comDate.compareTo(com.getComDate());
+	}
 }

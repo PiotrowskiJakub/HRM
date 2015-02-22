@@ -22,6 +22,7 @@ public interface AdminDao
 	void addProject(Project project);
 	void deleteProject(String name);
 	void editProject(Project project);
+	void changeProjectStatus(String name);
 	void addUser(User user);
 	void deleteUser(String login);
 	User getUser(String login);

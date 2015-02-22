@@ -88,6 +88,14 @@ public class AdminDaoImpl implements AdminDao
 		sf.getCurrentSession().update(project);
 	}
 	
+	public void changeProjectStatus(String name) 
+	{
+		Project project = getProject(name);
+		Boolean prjActive = project.getPrjFinished();
+		project.setPrjFinished(!prjActive);
+		editProject(project);
+	}
+	
 	public void addUser(User user)
 	{
 		sf.getCurrentSession().save(user);

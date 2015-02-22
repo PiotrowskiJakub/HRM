@@ -198,8 +198,7 @@ public class Task implements java.io.Serializable
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
 	public Set<WorkLog> getWorkLogs()
 	{
-		return this.workLogs;
-		//return new TreeSet<WorkLog>(this.workLogs);
+		return new TreeSet<WorkLog>(this.workLogs);
 	}
 
 	public void setWorkLogs(Set<WorkLog> workLogs)
@@ -210,8 +209,7 @@ public class Task implements java.io.Serializable
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
 	public Set<Comment> getComments()
 	{
-		return this.comments;
-		//return new TreeSet<Comment>(this.comments);
+		return new TreeSet<Comment>(this.comments);
 	}
 
 	public void setComments(Set<Comment> comments)

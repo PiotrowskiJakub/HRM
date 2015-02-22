@@ -18,4 +18,5 @@ public interface ProjectManagerDao
 	void editTask(Task task);
 	void addComment(Comment comment);
 	void addWorkLog(WorkLog workLog);
+	void addTask(Task task);
 }

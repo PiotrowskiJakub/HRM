@@ -762,3 +762,163 @@
 2015-02-22 14:42:07,155 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2015-02-22 14:42:07,158 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-02-22 14:42:07,158 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:46:46,325 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:46:46,326 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:46:46,328 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:46:46,328 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:47:01,152 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:01,153 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:47:01,155 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:01,155 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:47:30,321 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:30,322 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:47:30,324 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:30,324 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:47:35,537 [Worker-43] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2015-02-22 14:47:35,863 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.hrm:HRM:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\pom.xml.
+2015-02-22 14:47:35,977 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.EarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-ear:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\ear\pom.xml.
+2015-02-22 14:47:36,347 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 14:47:36,607 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 14:47:37,839 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 14:47:38,256 [Worker-43] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/main/java
+2015-02-22 14:47:38,256 [Worker-43] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /HRM-web/src/main/resources
+2015-02-22 14:47:38,256 [Worker-43] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/test/java
+2015-02-22 14:47:38,422 [Worker-43] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/main/java
+2015-02-22 14:47:38,423 [Worker-43] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /db.layer/src/main/resources overlaps with sources folder /db.layer/src/main/resources
+2015-02-22 14:47:38,423 [Worker-43] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/test/java
+2015-02-22 14:47:38,810 [Worker-43] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-ear
+2015-02-22 14:47:39,261 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 14:47:40,163 [Worker-43] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-web
+2015-02-22 14:47:40,295 [Worker-43] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 14:47:40,534 [Worker-43] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 4 sec
+2015-02-22 14:47:42,014 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 14:47:42,056 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:42,056 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\ear\src\main\resources
+2015-02-22 14:47:42,846 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:42,846 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:47:42,850 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:42,850 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:47:46,101 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:46,101 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:47:46,105 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:47:46,105 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\web\src\test\resources
+2015-02-22 14:51:21,895 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:51:21,896 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:51:21,898 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:51:21,898 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:51:55,508 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:51:55,509 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:51:55,511 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:51:55,511 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:52:11,117 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:11,118 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:52:11,120 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:11,120 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:52:25,184 [Worker-61] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2015-02-22 14:52:25,526 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.hrm:HRM:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\pom.xml.
+2015-02-22 14:52:25,631 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.EarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-ear:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\ear\pom.xml.
+2015-02-22 14:52:25,992 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 14:52:26,228 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 14:52:27,333 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 14:52:27,683 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/main/java
+2015-02-22 14:52:27,684 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /HRM-web/src/main/resources
+2015-02-22 14:52:27,684 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/test/java
+2015-02-22 14:52:27,870 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/main/java
+2015-02-22 14:52:27,870 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /db.layer/src/main/resources overlaps with sources folder /db.layer/src/main/resources
+2015-02-22 14:52:27,870 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/test/java
+2015-02-22 14:52:28,184 [Worker-61] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-ear
+2015-02-22 14:52:28,757 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 14:52:29,674 [Worker-61] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-web
+2015-02-22 14:52:29,855 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 14:52:30,243 [Worker-61] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 5 sec
+2015-02-22 14:52:31,942 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 14:52:31,955 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:31,956 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\ear\src\main\resources
+2015-02-22 14:52:32,532 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:32,533 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:52:32,538 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:32,538 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:52:35,891 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:35,892 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:52:35,897 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:35,897 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\web\src\test\resources
+2015-02-22 14:52:57,286 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:57,287 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:52:57,290 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:52:57,291 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:53:25,701 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:53:25,702 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:53:25,705 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:53:25,705 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:54:15,367 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:54:15,367 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:54:15,369 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:54:15,369 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:54:54,978 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:54:54,979 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:54:54,980 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:54:54,980 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:55:32,181 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:55:32,182 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:55:32,183 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:55:32,183 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:56:39,251 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:56:39,252 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:56:39,255 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:56:39,256 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:57:23,743 [Worker-76] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2015-02-22 14:57:24,077 [Worker-76] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.hrm:HRM:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\pom.xml.
+2015-02-22 14:57:24,180 [Worker-76] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.EarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-ear:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\ear\pom.xml.
+2015-02-22 14:57:24,526 [Worker-76] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 14:57:24,778 [Worker-76] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 14:57:25,793 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 14:57:26,128 [Worker-76] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/main/java
+2015-02-22 14:57:26,129 [Worker-76] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /HRM-web/src/main/resources
+2015-02-22 14:57:26,129 [Worker-76] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/test/java
+2015-02-22 14:57:26,288 [Worker-76] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/main/java
+2015-02-22 14:57:26,289 [Worker-76] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /db.layer/src/main/resources overlaps with sources folder /db.layer/src/main/resources
+2015-02-22 14:57:26,289 [Worker-76] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/test/java
+2015-02-22 14:57:26,657 [Worker-76] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-ear
+2015-02-22 14:57:27,052 [Worker-76] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 14:57:27,875 [Worker-76] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-web
+2015-02-22 14:57:28,018 [Worker-76] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 14:57:28,241 [Worker-76] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 4 sec
+2015-02-22 14:57:29,481 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 14:57:29,493 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:57:29,493 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\ear\src\main\resources
+2015-02-22 14:57:30,021 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:57:30,021 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:57:30,025 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:57:30,025 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 14:57:32,717 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:57:32,718 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 14:57:32,721 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 14:57:32,721 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\web\src\test\resources
+2015-02-22 15:01:55,854 [Worker-81] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2015-02-22 15:01:56,173 [Worker-81] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.hrm:HRM:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\pom.xml.
+2015-02-22 15:01:56,278 [Worker-81] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.EarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-ear:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\ear\pom.xml.
+2015-02-22 15:01:56,716 [Worker-81] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 15:01:57,008 [Worker-81] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 15:01:57,995 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 15:01:58,326 [Worker-81] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/main/java
+2015-02-22 15:01:58,327 [Worker-81] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /HRM-web/src/main/resources
+2015-02-22 15:01:58,327 [Worker-81] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /HRM-web/src/test/java
+2015-02-22 15:01:58,490 [Worker-81] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/main/java
+2015-02-22 15:01:58,491 [Worker-81] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /db.layer/src/main/resources overlaps with sources folder /db.layer/src/main/resources
+2015-02-22 15:01:58,491 [Worker-81] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /db.layer/src/test/java
+2015-02-22 15:01:58,795 [Worker-81] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-ear
+2015-02-22 15:01:59,252 [Worker-81] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:HRM-web:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\HRM\web\pom.xml.
+2015-02-22 15:02:00,101 [Worker-81] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for HRM-web
+2015-02-22 15:02:00,226 [Worker-81] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.hrm:db.layer:0.0.1-SNAPSHOT @ D:\Studia\V semestr\HRM\db.layer\pom.xml.
+2015-02-22 15:02:00,458 [Worker-81] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 4 sec
+2015-02-22 15:02:01,650 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Generating application.xml
+2015-02-22 15:02:01,661 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 15:02:01,661 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\ear\src\main\resources
+2015-02-22 15:02:02,230 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 15:02:02,231 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 15:02:02,235 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 15:02:02,235 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\db.layer\src\test\resources
+2015-02-22 15:02:05,055 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 15:02:05,055 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-02-22 15:02:05,059 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-02-22 15:02:05,059 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Studia\V semestr\HRM\HRM\web\src\test\resources
