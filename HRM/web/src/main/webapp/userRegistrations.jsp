@@ -23,7 +23,7 @@
 <title>Wpisy wybranego uzytkownika</title>
 <link href="editUserForm.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
      var auto = setInterval(    function ()
      {
@@ -41,6 +41,15 @@
 	function normalOpacity(x) {
 		document.getElementById("sidebar").style.opacity = "1.0";
 	}
+	$( window ).load(function() {
+		$( "#user_get" ).change(function() {
+			 var str = "";
+			    $( "select option:selected" ).each(function() {
+			      str += $( this ).text();
+			      window.location.href = "http://localhost:8080/HRM-web/userRegistrations.jsp?name=" + str;
+			    });
+			});
+	});
 </script>
 </head>
 <body>
@@ -82,14 +91,20 @@
 		<table>
 			<tr>
 				<td>Pracownik: </td>
-				<td><input type=text name="user" value="Wybierz pracownika" list=users><datalist id=users>
+				<td>
+				<select id="user_get" >
+					
 					<%
+					String name = "";
+					name = (String)request.getParameter("name");
+					
 					UserManagement userManagement = new UserManagement();
 					List<User> users = userManagement.getAllUsers();
 					for(User usr : users) {
 					%>
-					<option value="<%=usr.getUsrLogin()%>">
-					<% } %></datalist>
+					<option <%  if( usr.getUsrLogin().equals(name)){ %> selected="selected" <% } %> value="<%=usr.getUsrLogin()%>"><%=usr.getUsrLogin()%></option>
+					<% } %>
+					</select>
 				</td>
 			</tr>
 		</table>
@@ -102,7 +117,12 @@
 	  String registrationContent;
 	  boolean isWorklog;
 	  ActivityManagement activityManagemenent = new ActivityManagement();
-	  List<UserRegistration> registrations = activityManagemenent.getAllUserRegistrations("kuba");
+	  
+	  List<UserRegistration> registrations;
+	  if( name != null && !name.equals(""))
+		  registrations = activityManagemenent.getAllUserRegistrations(name);
+	  else
+		  registrations = activityManagemenent.getAllUserRegistrations(users.get(0).getUsrLogin());
 	  System.out.println(registrations.size());
 	  for(UserRegistration registr : registrations){
 		  registrationTitle = registr.getRegistrationTitle();

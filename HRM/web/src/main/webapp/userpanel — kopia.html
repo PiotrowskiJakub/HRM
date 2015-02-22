@@ -1,7 +1,3 @@
-<%@page import="com.hrm.singleton.Singelton"%>
-<%@page import="com.hrm.observer.ObserverManager"%>
-<%@page import="com.hrm.observer.Observer"%>
-<%@page import="com.hrm.observer.ObserverUser"%>
 <%@page import="com.hrm.db.model.Comment"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.hrm.db.model.Task"%>
@@ -17,14 +13,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Panel uzytkownika</title>
-<link href="css/user.css" rel="stylesheet" type="text/css" />
+<link href="user.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
-
-	function showUp(userName, userSurname, actionCode){
-		$("#message_content.message").empty().append("User: " + userName + " " + userSurname + "was " + actionCode);
-		$("#message_content").show();
-	}
      var auto = setInterval(    function ()
      {
           $('#score').load('reload-window.jsp').fadeIn("slow");
@@ -32,35 +23,18 @@
 
 
 	$(document).ready(function(){
-		function lowOpacity(x) {
-			document.getElementById("sidebar").style.opacity = "0.2";
-			document.getElementyById("menu").style.position = "absolute";
-		}
-
-		function normalOpacity(x) {
-			document.getElementById("sidebar").style.opacity = "1.0";
-		}
 	    $(".comments_hidden").hide();
 
 	    $("div.show_more_comments").click(function(){
 	    	
 		    $(this).toggleClass("active").next().slideToggle("slow");
     	});
-    	
-	    $("#close_button").click(function(){
-        	$("#message_content").hide();
-        });
-	    $("button#close_button").click(function(){
-        	$("#message_content").hide();
-        	location.reload();
-        });
-        
     });
 
 	$( window ).load(function() {
 	    $( "form#addComment" ).submit(function( event ) {
 	    	 console.log("dziala?");
-	    	 $("#loader").show();
+	    	 
 	    	 event.preventDefault();
 	    	  var $form = $( this ),
 	    	    commentValueForm = $form.find( "input[name='commentValue']" ).val(),
@@ -70,14 +44,11 @@
 	    	  var posting = $.post( 'addCommentUser.jsp', { idTask: idTaskForm, commentValue:commentValueForm} );
 	    	  posting.done(function( data ) {
 		    	  console.log("wyslalo sie");
-		    	  $("#loader").hide();
-		    	  $form.empty().append('<span style="text-align:center; width:500px;">Komenatrz został dodany</span>');	     
+		    	  $form.empty().append('<span style="text-align:center; width:500px; color: #fff;">Komenatrz został dodany</span>');	     
 		    	  
 		      });
 	    	  return false;
 	    	});
-
-    	
 	});
      
 </script>
@@ -87,12 +58,6 @@
 
 <!--  initialize EmployeeManager -->
 <%
-
-
-
-ObserverManager observerInstance = Singelton.getInstance();
-ObserverUser observer = new ObserverUser(observerInstance,pageContext,response,request);
-
 String userId;
 EmployeeManager employeeManager = null;
 
@@ -110,15 +75,20 @@ if(employeeManager == null){
 	<jsp:forward page="index.jsp?login=false" />
 	<%
 	}
-
-
 %>
 
-<div id="loader" style="display: none; position:absolute; top: 0; left: 0; z-index: 100; background-color: rgba(0,0,0,0.6); width:100%; height:500%;">
+<div style="display:none; position:absolute; top: 0; left: 0; z-index: 100; background-color: rgba(0,0,0,0.6); width:100%; height:500%;">
 <img style="position:absolute; margin-top:200px; right:48%; height:100px; width:100px" src="images/loader.gif" width="100" height="100" />
 </div>
 
-
+<div id="message_content" style="position:fixed; z-index:100; background: rgba(60, 124, 182, 0.6); width:500px; height:170px; left:35%; border: 2px solid #555555;">
+<div class="title" style="float:left; color:#1c1826; font-size:30px; text-align:center; width:455px;">Powiadomienie</div>
+<div class="close" style="float:left; width:27px; padding-top:5px;"><img src="images/close.png" id="close_button" width="25" height="25"/></div>
+<div class="clear"></div>
+<div class="message" style="width:470px; margin: 15px; font-size:20px; color:#1c1826;">Użytkownik: Konrad Hopek, dodał nowy komentarz</div>
+<div class="clear"></div>
+<button style="float:right; margin-right:20px; width: 60px; height:30px; background: #1c1826; color: #fff; border:none;" id="close_button">Ok</button>
+</div>
 
 <!-- start header -->
 <div id="header">

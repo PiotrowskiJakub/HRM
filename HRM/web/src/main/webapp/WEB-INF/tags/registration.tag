@@ -9,34 +9,34 @@
     border-radius:10px;
     font-family:Tahoma,Geneva,Arial,sans-serif;
     font-size:11px;
-    padding:10px 10px 10px 36px;
+    padding: 10px;
     margin-left : 10px;	
     margin-right : 10px;
-    background:#A9BCF5;
+    background:#00567a;
 	overflow: hidden;
 }
 
 #div1 {
 	color:#555;
-    border-radius:10px;
+    
     font-family:Tahoma,Geneva,Arial,sans-serif;
     font-size:11px;
-    padding:10px 10px 10px 36px;
+    padding:10px;
     margin-left : 10px;	
     margin-right : 10px;
-    background:#D8D8D8;
+    background:#d7d7d7;
 	overflow: hidden;
+	border-bottom: 1px solid #5a5a5a;
 }
 
 #div2 {
 	color:#555;
-    border-radius:10px;
     font-family:Tahoma,Geneva,Arial,sans-serif;
     font-size:11px;
-    padding:10px 10px 10px 36px;
+    padding:10px;
     margin-left : 10px;	
     margin-right : 10px;
-    background:#D8D8D8;
+    background:#d7d7d7;
 	overflow: hidden;
 }
 </style>
@@ -46,7 +46,7 @@
 		<div id="div1">
 			<jsp:invoke fragment="registrationTitle" />
 		</div>
-		<br />
+		
 		<div id="div2">
 			<jsp:invoke fragment="registrationContent" />
 		</div>
