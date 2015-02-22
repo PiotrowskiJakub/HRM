@@ -51,6 +51,11 @@ public class EmployeeManager {
 	public Set<Comment> getAllComents(){
 		return employeeDao.getUserComments(loginName);
 	}
+	public void  addComment(Integer idTask, String commentValue){
+		Task task = employeeDao.getTask(idTask);
+		Comment comment = new Comment(task, getUser(), commentValue, new Date());
+		employeeDao.addTaskComment(idTask, comment);
+	}
 	
 	public Set<Map.Entry<String,Integer[]>> getAllTitlesTask(){
 		HashMap<String, Integer[]> tmp = new HashMap<String, Integer[]>();

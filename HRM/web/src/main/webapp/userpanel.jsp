@@ -1,3 +1,7 @@
+<%@page import="com.hrm.singleton.Singelton"%>
+<%@page import="com.hrm.observer.ObserverManager"%>
+<%@page import="com.hrm.observer.Observer"%>
+<%@page import="com.hrm.observer.ObserverUser"%>
 <%@page import="com.hrm.db.model.Comment"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.hrm.db.model.Task"%>
@@ -13,9 +17,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Panel uzytkownika</title>
-<link href="user.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
+<link href="css/user.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
+
+	function showUp(userName, userSurname, actionCode){
+		$("#message_content.message").empty().append("User: " + userName + " " + userSurname + "was " + actionCode);
+		$("#message_content").show();
+	}
      var auto = setInterval(    function ()
      {
           $('#score').load('reload-window.jsp').fadeIn("slow");
@@ -23,34 +32,67 @@
 
 
 	$(document).ready(function(){
+		function lowOpacity(x) {
+			document.getElementById("sidebar").style.opacity = "0.2";
+			document.getElementyById("menu").style.position = "absolute";
+		}
+
+		function normalOpacity(x) {
+			document.getElementById("sidebar").style.opacity = "1.0";
+		}
 	    $(".comments_hidden").hide();
 
 	    $("div.show_more_comments").click(function(){
 	    	
 		    $(this).toggleClass("active").next().slideToggle("slow");
     	});
-
+    	
+	    $("#close_button").click(function(){
+        	$("#message_content").hide();
+        });
+	    $("button#close_button").click(function(){
+        	$("#message_content").hide();
+        	location.reload();
+        });
+        
     });
 
+	$( window ).load(function() {
+	    $( "form#addComment" ).submit(function( event ) {
+	    	 console.log("dziala?");
+	    	 $("#loader").show();
+	    	 event.preventDefault();
+	    	  var $form = $( this ),
+	    	    commentValueForm = $form.find( "input[name='commentValue']" ).val(),
+	    	    idTaskForm = $form.find( "input[name='idTask']" ).val();
+	    	    
+	    	 
+	    	  var posting = $.post( 'addCommentUser.jsp', { idTask: idTaskForm, commentValue:commentValueForm} );
+	    	  posting.done(function( data ) {
+		    	  console.log("wyslalo sie");
+		    	  $("#loader").hide();
+		    	  $form.empty().append('<span style="text-align:center; width:500px;">Komenatrz został dodany</span>');	     
+		    	  
+		      });
+	    	  return false;
+	    	});
+
+    	
+	});
      
 </script>
 
-<!-- Changes the opacity of sidebar while menu list is displayed -->
-<script>
-	function lowOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "0.2";
-		document.getElementyById("menu").style.position = "absolute";
-	}
-
-	function normalOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "1.0";
-	}
-</script>
 </head>
 <body>
 
 <!--  initialize EmployeeManager -->
 <%
+
+
+
+ObserverManager observerInstance = Singelton.getInstance();
+ObserverUser observer = new ObserverUser(observerInstance,pageContext.getOut());
+//observer.show();
 String userId;
 EmployeeManager employeeManager = null;
 
@@ -68,7 +110,24 @@ if(employeeManager == null){
 	<jsp:forward page="index.jsp?login=false" />
 	<%
 	}
+
+
 %>
+
+<div id="loader" style="display: none; position:absolute; top: 0; left: 0; z-index: 100; background-color: rgba(0,0,0,0.6); width:100%; height:500%;">
+<img style="position:absolute; margin-top:200px; right:48%; height:100px; width:100px" src="images/loader.gif" width="100" height="100" />
+</div>
+
+
+<div id="message_content">
+<div class="title" >Powiadomienie</div>
+<div class="close" ><img id="close_button" src="images/close.png" id="close_button" width="25" height="25"/></div>
+<div class="clear"></div>
+<div class="message">Użytkownik: Konrad Hopek, dodał nowy komentarz</div>
+<div class="clear"></div>
+<button id="close_button" class="close_button" >Zresetuj panel</button>
+</div>
+
 
 
 <!-- start header -->
@@ -209,10 +268,13 @@ if(employeeManager == null){
    				<div class="clear"></div>
    				
    				<div class="add_comment">
+   				<form id="addComment" method="post">
 	   				<input type="text" value="Wpisz komentarz..." 
 						onclick="if(this.value=='Wpisz komentarz...'){this.value=''}" 
-	   					onblur="if(this.value==''){this.value='Wpisz komentarz...'}"/>
-	   				<img onclick="add_comment()" src ="images/task/send_comment.png" />
+	   					onblur="if(this.value==''){this.value='Wpisz komentarz...'}" name="commentValue" id="comment_value"/>
+   					<input type="hidden" name="idTask" id="id_task" value="<%=currentTask.getTskId()%>" />
+   					<input type="submit" style="background-image: url('images/task/send_comment.png'); width:33px; height: 23px; "  value =""/>
+   				</form>
    				</div>
    			
 		</div>
@@ -227,8 +289,7 @@ if(employeeManager == null){
 		
 	</div>
 		 
-		<div class="right account">
-			<div class="move_account">
+		<div class="right account">		
 				<div class="title">Moje konto:</div>
 				<hr style="border:solid 1px #bcbcbc; margin: 0 7px;"/>
 				
@@ -263,7 +324,7 @@ if(employeeManager == null){
 				<% } %>
 				</div>
 				
-			</div>
+			
 		</div>
 			<div style="height:500px;">&nbsp;</div>
 		
