@@ -1,5 +1,0 @@
-INDEX VERSION 1.127
-D:\Studia\V semestr\HRM\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2678716436.index
-\HRM-web\src\main\java
-D:\Studia\V semestr\HRM\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\37050887.index
-\HRM-web\src\main\java
