@@ -4,12 +4,12 @@
     pageEncoding="ISO-8859-1"%>
     
 <%
-	String userId = "";
-	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
-		response.sendRedirect("index.jsp?login=false");	
-	} else {
-		userId = (String) session.getAttribute("userid");
-	}
+	//String userId = "";
+	//if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+	//	response.sendRedirect("index.jsp?login=false");	
+	//} else {
+	//	userId = (String) session.getAttribute("userid");
+	//}
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -55,8 +55,7 @@
 					<ul>
 						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
 						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
-					</ul>
-				</li>
+					</ul></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Zarzadzaj projektami</a>
 					<ul>
 						<li><a href="allProjectsForm.jsp">Pokaz projekty</a></li>
@@ -76,15 +75,9 @@
 	<div id="content">
 				<table title="users">
 				  <tr>
-				    <th>Login</th>
-				    <th>Imie</th> 
-				    <th>Nazwisko</th>
-				    <th>E-mail</th>
-				    <th>Sektor</th> 
-				    <th>Rola</th>
-				    <th>Przelozony</th>
-				    <th>Data utworzenia</th> 
-				    <th>Stan konta</th>
+				    <th>Nazwa Projektu</th>
+				    <th>Opis </th>  
+				    <th>Status</th>
 				    <th></th>
 				    <th></th>
 				    
@@ -102,13 +95,7 @@
 				 	%>
 					  <tr>
 					    <td><%=usr.getUsrLogin() %></td>
-					    <td><%=usr.getUsrName() %></td> 
-					    <td><%=usr.getUsrSurname() %></td>
-					    <td><%=usr.getUsrEmail() %></td>
-					    <td><%=usr.getSection().getSecName() %></td>
-					    <td><%=usr.getRole().getRolName() %></td>
-					    <td><%=boss %></td>
-					    <td><%=usr.getUsrDateCreation().toString() %></td>
+					    <td>lorem ipsumsad asdsadjknjdjk jsahd asd adsdasas a ads  asd sad dsa sd a sad das dassad</td> 
 					    <%if(usr.isUsrActive()){%>
 					    	<td><form id="formCheck" action="changeUserStatus.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Aktywne" /></form></td>
 					   	<%}else{ %>

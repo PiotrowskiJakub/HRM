@@ -55,7 +55,12 @@
 						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
 						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
-				<li><a href="#">Zarzadzaj projektami</a></li>
+				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Zarzadzaj projektami</a>
+					<ul>
+						<li><a href="allProjectsForm.jsp">Pokaz projekty</a></li>
+						<li><a href="addProjectForm.jsp">Dodaj projekt</a></li>
+					</ul>
+				</li>
 				<li><a href="logout.jsp">Wyloguj</a></li>
 			</ul>
 

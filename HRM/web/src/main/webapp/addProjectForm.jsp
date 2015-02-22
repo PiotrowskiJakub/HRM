@@ -1,26 +1,23 @@
-<%@page import="com.hrm.admin.ActivityManagement"%>
 <%@ page import="java.util.*"%>
-<%@page import="com.hrm.db.model.Section, com.hrm.admin.UserManagement, com.hrm.admin.UserRegistration, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User, com.hrm.db.model.Role"%>
+<%@page import="com.hrm.db.model.Section, com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User, com.hrm.db.model.Role"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
+    
+    
 <%
-	String userId = "";
-	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
-		response.sendRedirect("index.jsp?login=false");	
-	} else {
-		userId = (String) session.getAttribute("userid");
-	}
+	//String userId = "";
+	//if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+	//	response.sendRedirect("index.jsp?login=false");	
+	//} else {
+	//	userId = (String) session.getAttribute("userid");
+	//}
 %>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Wpisy wybranego uzytkownika</title>
+<title>Formularz dodawania projektu</title>
 <link href="editUserForm.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
@@ -72,55 +69,26 @@
 </div>
 <!-- end header -->
 
-
 <!-- start page -->
 <div id="page">
 	<!-- start content -->
 	<div id="content">
-	
-	<form id="formCheck" action="userRegistrations.jsp" method="POST">
-		<table>
-			<tr>
-				<td>Pracownik: </td>
-				<td><input type=text name="user" value="Wybierz pracownika" list=users><datalist id=users>
-					<%
-					UserManagement userManagement = new UserManagement();
-					List<User> users = userManagement.getAllUsers();
-					for(User usr : users) {
-					%>
-					<option value="<%=usr.getUsrLogin()%>">
-					<% } %></datalist>
-				</td>
-			</tr>
-		</table>
-	</form>
-	<br />
-	<br />
-		
-	<%
-	  String registrationTitle;
-	  String registrationContent;
-	  boolean isWorklog;
-	  ActivityManagement activityManagemenent = new ActivityManagement();
-	  List<UserRegistration> registrations = activityManagemenent.getAllUserRegistrations("kuba");
-	  System.out.println(registrations.size());
-	  for(UserRegistration registr : registrations){
-		  registrationTitle = registr.getRegistrationTitle();
-		  registrationContent = registr.getContent();%>
-		  
-		<c:set var="registrationTitle" value="<%= registrationTitle %>" />
-		<c:set var="registrationContent" value="<%= registrationContent %>" />
-
-		<t:registration>
-		<jsp:attribute name="registrationTitle">
-			${registrationTitle}
-		</jsp:attribute>
-		<jsp:attribute name="registrationContent">
-			${registrationContent}
-		</jsp:attribute>
-		</t:registration>
-		<br></br>
-	<% } %>	
+		<div class="editForm">
+			<h1>Nowy projekt</h1>
+			<form id="formCheck" action="addUser.jsp" method="POST">
+			<table>
+				<tr>
+					<td>Nazwa Projektu: </td> <td><input type="text" name="projectName"></td>
+				</tr>
+				<tr>
+					<td>Opis: </td> <td> <textarea rows="10" cols="70" name="description"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:right;"><input type="submit" value="Zapisz" /></td>
+				</tr>
+			</table>
+			</form>
+		</div>
 	</div>
 	<!-- end content -->
 
