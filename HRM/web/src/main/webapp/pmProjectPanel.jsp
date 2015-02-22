@@ -74,7 +74,7 @@ private String getTimeOutput(int tskTime) {
 							<c:param name="type" value="2" />
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
-				<li><a href="${employeesUrl}">Zarz&#261;dzaj</a></li>
+				<li><a href="${employeesUrl}">Pracownicy</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
 					<a href="#">Twoje projekty</a>
 					<ul>
@@ -112,6 +112,12 @@ private String getTimeOutput(int tskTime) {
 	<!-- start content -->
 	<div id="content">
 		<div class="post">
+			<c:url value="addTaskForm.jsp" var="addTaskUrl">
+				<c:param name="projectid" value="<%= projectId %>" />
+			</c:url>
+			<a href="${addTaskUrl}">
+				<button>Dodaj</button>
+			</a>
 			<div class="entry">
 				<h2 style="color:green">
 					<%= projectId %>

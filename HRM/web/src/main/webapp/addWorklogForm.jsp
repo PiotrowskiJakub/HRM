@@ -85,7 +85,7 @@ private String getTimeOutput(double tskTime) {
 							<c:param name="type" value="2" />
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
-				<li><a href="${employeesUrl}">Zarz&#261;dzaj</a></li>
+				<li><a href="${employeesUrl}">Pracownicy</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
 					<a href="#">Twoje projekty</a>
 					<ul>

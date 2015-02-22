@@ -1,7 +1,10 @@
 package com.hrm.pm;
 
+import java.util.Date;
+
 import com.hrm.DaoInitializer;
 import com.hrm.db.dao.ProjectManagerDao;
+import com.hrm.db.model.Project;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.TaskPriority;
 import com.hrm.db.model.User;
@@ -15,6 +18,36 @@ public class TaskManagement {
 	private String time;
 	private String taskid;
 	private String description;
+	private String creator;
+	private String name;
+	private String projectid;
+	
+	public boolean addTask () {
+		pmDao = DaoInitializer.getDao(ProjectManagerDao.class);	
+		String prio = "";
+		
+		if(assignee == null || priority == null || status == null || time == null ||
+				description == null || creator == null || name == null
+				|| projectid == null) {
+			return false;
+		}
+		
+		User user = pmDao.getUser(assignee);
+		User leader = pmDao.getUser(creator);
+		TaskPriority tskPrio = new TaskPriority(prio, priority);
+		Project project = pmDao.getProject(projectid);
+		Date date = new Date();
+		
+		
+		if(user == null || leader == null || tskPrio == null || project == null) {
+			return false;
+		}
+		
+		Task task = new Task(user, leader, name, date, Integer.valueOf(time), Boolean.valueOf(status));
+		task.setProject(project);
+		
+		return true;
+	}
 	
 	public boolean editTask() {
 		pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
@@ -99,5 +132,29 @@ public class TaskManagement {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+	
+	public String getCreator() {
+		return creator;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setProjectid(String projectid) {
+		this.projectid = projectid;
+	}
+	
+	public String getProjectid() {
+		return projectid;
 	}
 }

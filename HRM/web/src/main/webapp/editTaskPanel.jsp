@@ -62,7 +62,7 @@ com.hrm.db.model.User,com.hrm.DaoInitializer, com.hrm.db.dao.ProjectManagerDao;"
 							<c:param name="type" value="2" />
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
-				<li><a href="${employeesUrl}">Zarz&#261;dzaj</a></li>
+				<li><a href="${employeesUrl}">Pracownicy</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
 					<a href="#">Twoje projekty</a>
 					<ul>
