@@ -5,6 +5,7 @@
   <project name="HRM-web"/>
  </used-by-projects>
  <paths>
+  <path value="C:/Users/Vobis/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.4.3/jackson-databind-2.4.3.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-webmvc/4.1.0.RELEASE/spring-webmvc-4.1.0.RELEASE.jar">
    <libraries>
     <library class="tld">
@@ -17,7 +18,6 @@
     </library>
    </libraries>
   </path>
-  <path value="C:/Users/Vobis/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.4.3/jackson-databind-2.4.3.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-tx/4.1.0.RELEASE/spring-tx-4.1.0.RELEASE.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/hibernate/common/hibernate-commons-annotations/4.0.2.Final/hibernate-commons-annotations-4.0.2.Final.jar"/>
@@ -36,8 +36,8 @@
   <path value="C:/Users/Vobis/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.4.3/jackson-core-2.4.3.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-web/4.1.0.RELEASE/spring-web-4.1.0.RELEASE.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-expression/4.1.0.RELEASE/spring-expression-4.1.0.RELEASE.jar"/>
-  <path value="C:/Users/Vobis/.m2/repository/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-orm/4.1.0.RELEASE/spring-orm-4.1.0.RELEASE.jar"/>
+  <path value="C:/Users/Vobis/.m2/repository/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-core/4.1.0.RELEASE/spring-core-4.1.0.RELEASE.jar"/>
   <path value="C:/Users/Vobis/.m2/repository/org/springframework/spring-aop/4.1.0.RELEASE/spring-aop-4.1.0.RELEASE.jar"/>
