@@ -5,7 +5,6 @@ import java.util.Date;
 import com.hrm.DaoInitializer;
 import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Comment;
-import com.hrm.db.model.User;
 
 public class CommentManagement {
 	
