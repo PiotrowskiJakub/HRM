@@ -5,6 +5,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.hrm.db.conf.impl.DefaultSpringAppConfiguration;
 import com.hrm.db.dao.AdminDao;
+import com.hrm.db.dao.EmployeeDao;
+import com.hrm.db.model.UserLog;
 
 /**
  * 
@@ -21,7 +23,7 @@ public class TestClass {
 	
 	public static void main(String[] args)
 	{
-		AdminDao adminDao = getBean(AdminDao.class);
-		adminDao.deleteProject("Delete_test");
+		EmployeeDao adminDao = getBean(EmployeeDao.class);
+		System.out.println(adminDao.getActionDoneName(2));
 	}
 }

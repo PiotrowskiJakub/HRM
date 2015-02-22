@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,11 +13,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hrm.db.dao.EmployeeDao;
+import com.hrm.db.model.ActionDone;
 import com.hrm.db.model.Comment;
 import com.hrm.db.model.Leave;
 import com.hrm.db.model.Role;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
+import com.hrm.db.model.UserLog;
 import com.hrm.db.model.WorkLog;
 
 @Repository
@@ -82,6 +85,26 @@ public class EmployeeDaoImpl implements EmployeeDao
 	public Set<Comment> getTaskComments(Integer id)
 	{
 		return getTask(id).getComments();
+	}
+	
+	public List<UserLog> getAllUserLogs()
+	{
+		Criteria crt = sf.getCurrentSession().createCriteria(UserLog.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		crt.addOrder(Order.asc("uloDate"));
+		return (List<UserLog>) crt.list();
+	}
+	
+	public String getActionDoneName(Integer id)
+	{
+		ActionDone ad = (ActionDone) sf.getCurrentSession().createCriteria(ActionDone.class).add(Restrictions.eq("adoId", id)).uniqueResult();
+		if(ad == null)
+			return null;
+		return ad.getAdoName();
+	}
+	
+	public void addUserLog(UserLog userLog)
+	{
+		sf.getCurrentSession().save(userLog);
 	}
 
 	public void addUserLeave(String login, Leave leave)
