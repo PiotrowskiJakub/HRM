@@ -165,4 +165,24 @@ public class UserManagement {
 		this.boss = boss;
 	}
 	
+	public static String getTimeOutput(double tskTime) {
+		String result = "";
+		int minutes = (int) ((tskTime / (1000*60)) % 60);
+		int hours   = (int) ((tskTime / (1000*60*60)) % 24);
+		int days   = (int) ((tskTime / (1000*60*60*24)));
+		int weeks   = (int) ((tskTime / (1000*60*60*24*7)));
+		
+		if(weeks > 0) {
+			result += weeks + "w ";
+		} if(days > 0) {
+			result += days + "d ";
+		} if(hours > 0) {
+			result += hours + "h ";
+		} if(minutes > 0) {
+			result += minutes + "min ";
+		}
+		
+		return result;
+	}
+	
 }

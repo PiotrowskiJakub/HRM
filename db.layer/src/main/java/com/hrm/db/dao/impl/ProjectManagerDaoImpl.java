@@ -62,4 +62,9 @@ public class ProjectManagerDaoImpl implements ProjectManagerDao
 	{
 		sf.getCurrentSession().save(workLog);
 	}
+
+	public void addTask(Task task) 
+	{
+		sf.getCurrentSession().save(task);
+	}
 }

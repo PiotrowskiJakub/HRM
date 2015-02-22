@@ -1,13 +1,21 @@
 package com.hrm.db.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+
 import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -190,7 +198,7 @@ public class Task implements java.io.Serializable
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
 	public Set<WorkLog> getWorkLogs()
 	{
-		return this.workLogs;
+		return new TreeSet<WorkLog>(this.workLogs);
 	}
 
 	public void setWorkLogs(Set<WorkLog> workLogs)
@@ -201,7 +209,7 @@ public class Task implements java.io.Serializable
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
 	public Set<Comment> getComments()
 	{
-		return this.comments;
+		return new TreeSet<Comment>(this.comments);
 	}
 
 	public void setComments(Set<Comment> comments)

@@ -18,10 +18,16 @@ public interface AdminDao
 	Role getRoleByName(String name);
 	Section getSectionByCode(String code);
 	Section getSectionByName(String name);
+	Project getProject(String name);
+	void addProject(Project project);
+	void deleteProject(String name);
+	void editProject(Project project);
+	void changeProjectStatus(String name);
 	void addUser(User user);
 	void deleteUser(String login);
 	User getUser(String login);
 	void editUser(User user);
+	List<Project> getProjects();
 	Set<Project> getUserProjects(String login);
 	Set<Task> getUserTasks(String login);
 	void changeUserStatus(String login);

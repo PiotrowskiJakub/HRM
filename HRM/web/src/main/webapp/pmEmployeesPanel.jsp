@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project"%>
+<%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project,
+ com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, 
+ com.hrm.db.model.User, com.hrm.db.dao.ProjectManagerDao, com.hrm.DaoInitializer" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,16 +30,13 @@
      }, 1000); // refresh every 5000 milliseconds
 </script>
 
-<!-- Changes the opacity of sidebar while menu list is displayed -->
-<script>
-	function lowOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "0.2";
-		document.getElementyById("menu").style.position = "absolute";
-	}
-
-	function normalOpacity(x) {
-		document.getElementById("sidebar").style.opacity = "1.0";
-	}
+<!-- Row in table as link -->
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	    $(".clickableRow").click(function() {
+	          window.document.location = $(this).attr("href");
+	    });
+	});
 </script>
 </head>
 <body>
@@ -59,8 +58,8 @@
 							<c:param name="type" value="2" />
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
-				<li><a href="${employeesUrl}">Zarz&#261;dzaj</a></li>
-				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
+				<li><a href="${employeesUrl}">Pracownicy</a></li>
+				<li>
 					<a href="#">Twoje projekty</a>
 					<ul>
 						<% UserProjectsManagement uspm = new UserProjectsManagement(userId);
@@ -102,39 +101,40 @@
 					HRM &mdash; Human Resource Management
 				</h2><br><br>
 				<p>
-					Employees
+					<table>
+					<thead>
+						<tr>
+							<th><b>Imie:  </b></th>
+							<th><b>Nazwisko:  </b></th>
+						</tr>
+					</thead>
+					<tbody>
+					<%
+						ProjectManagerDao pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
+						User user = pmDao.getUser(userId);
+						Set<User> users = user.getUsers();
+						for(User u : users) {
+				          String login = u.getUsrLogin();
+				          String name = u.getUsrName();
+				          String surname = u.getUsrSurname();
+						  %>
+						  		<c:url value="pmUserPanel.jsp" var="userUrl">
+									<c:param name="login" value="<%= login %>" />
+									<c:param name="name" value="<%= name %>" />
+									<c:param name="surname" value="<%= surname %>" />
+								</c:url>
+								<tr class='clickableRow' href="${userUrl}">
+									<td><%= name %></td>
+									<td><%= surname %></td>
+								</tr>		
+						<% } %>
+					</tbody>
+					</table>
 				</p>
 			</div>
 		</div>
 	</div>
 	<!-- end content -->
-	
-	<!-- start sidebar -->
-	<div id="sidebar">
-		<ul>
-			<li id="search">
-				<form method="get" action="">
-					<fieldset>
-					<input type="text" id="s" name="s" value="" />
-					<input type="submit" id="x" value="Szukaj" />
-					</fieldset>
-				</form>
-			</li>
-			<li>
-				<h2><b>Twoje zadania</b></h2>
-				<ul>
-					<li><a href="#">HRM-132</a> Zadanie 1</li>
-					<li><a href="#">HRM-236</a> Zadanie 2</li>
-					<li><a href="#">HRM-52</a> Zadanie 3</li>
-					<li><a href="#">HRM-564</a> Zadanie 4</li>
-					<li><a href="#">HRM-122</a> Zadanie 5</li>
-					<li><a href="#">HRM-345</a> Zadanie 6</li>
-					
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<!-- end sidebar -->
 	<div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end page -->
