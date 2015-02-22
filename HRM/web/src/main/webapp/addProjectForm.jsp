@@ -5,12 +5,12 @@
     
     
 <%
-	//String userId = "";
-	//if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
-	//	response.sendRedirect("index.jsp?login=false");	
-	//} else {
-	//	userId = (String) session.getAttribute("userid");
-	//}
+	String userId = "";
+	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+		response.sendRedirect("index.jsp?login=false");	
+	} else {
+		userId = (String) session.getAttribute("userid");
+	}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -4,12 +4,12 @@
     pageEncoding="ISO-8859-1"%>
     
 <%
-	//String userId = "";
-	//if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
-	//	response.sendRedirect("index.jsp?login=false");	
-	//} else {
-	//	userId = (String) session.getAttribute("userid");
-	//}
+	String userId = "";
+	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+		response.sendRedirect("index.jsp?login=false");	
+	} else {
+		userId = (String) session.getAttribute("userid");
+	}
 %>
     
 <jsp:useBean id="formHandler" class="com.hrm.admin.ProjectManagement" scope="request">
@@ -77,7 +77,7 @@
 	<!-- start content -->
 	<div id="content">
 		<div class="editForm">
-			<h1>Edytowanie uzytkownika</h1>
+			<h1>Edytowanie projektu</h1>
 			<form id="formCheck" action="editProject.jsp" method="POST">
 			<table>
 				<tr>
