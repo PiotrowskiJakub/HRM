@@ -70,7 +70,7 @@ private String getTimeOutput(double tskTime) {
 							<c:param name="userid" value="<%= userId %>" />
 				</c:url>
 				<li><a href="${employeesUrl}">Pracownicy</a></li>
-				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()">
+				<li>
 					<a href="#">Twoje projekty</a>
 					<ul>
 						<% UserProjectsManagement uspm = new UserProjectsManagement(userId);
@@ -126,7 +126,7 @@ private String getTimeOutput(double tskTime) {
 				String timeLeft = getTimeOutput(task.getTskTime());
 			%>
 				<h1 class="title"><%= taskId %></h1>
-				<c:url value="selectPMPanel.jsp" var="editTaskUrl">
+				<c:url value="editTaskPanel.jsp" var="editTaskUrl">
 					<c:param name="type" value="5" />
 					<c:param name="userid" value="<%= userId %>" />
 					<c:param name="taskid" value="<%= taskId %>" />
@@ -267,32 +267,6 @@ private String getTimeOutput(double tskTime) {
 			</div>
 		</div>
 	<!-- end content -->
-	
-	<!-- start sidebar -->
-	<div id="sidebar">
-		<ul>
-			<li id="search">
-				<form method="get" action="">
-					<fieldset>
-					<input type="text" id="s" name="s" value="" />
-					<input type="submit" id="x" value="Szukaj" />
-					</fieldset>
-				</form>
-			</li>
-			<li>
-				<h2><b>Twoje zadania</b></h2>
-				<ul>
-					<li><a href="#">HRM-132</a> Zadanie 1</li>
-					<li><a href="#">HRM-236</a> Zadanie 2</li>
-					<li><a href="#">HRM-52</a> Zadanie 3</li>
-					<li><a href="#">HRM-564</a> Zadanie 4</li>
-					<li><a href="#">HRM-122</a> Zadanie 5</li>
-					<li><a href="#">HRM-345</a> Zadanie 6</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<!-- end sidebar -->
 	<div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end page -->
