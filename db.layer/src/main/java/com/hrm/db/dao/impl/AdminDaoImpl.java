@@ -84,6 +84,12 @@ public class AdminDaoImpl implements AdminDao
 		sf.getCurrentSession().update(user);
 	}
 	
+	public List<Project> getProjects() 
+	{
+		Criteria crt = sf.getCurrentSession().createCriteria(Project.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return (List<Project>) crt.list();
+	}
+	
 	public Set<Project> getUserProjects(String login)
 	{
 		return getUser(login).getProjects();
