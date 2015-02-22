@@ -21,9 +21,13 @@ public class UserProjectsManagement {
 		this.login = login;
 		this.projects = new ArrayList<Project>(
 				adminDao.getUserProjects(this.login));
-		Collections.sort(this.projects, new Comparator<Project>() {
+		/* Wzorzec projektowy Strategia */
+		Sorter sorter = new Sorter();
+		sorter.setSorter(new QuickSort());
+		SortingStrategy quick = sorter.getSorter();
+		quick.sort(this.projects, new Comparator<Project>() {
 	        public int compare(Project p1, Project p2) {
-	            return p1.getPrjName().compareTo(p2.getPrjName());
+	            return p1.getPrjName().compareTo(p2.getPrjName()) * -1;
 	         }
 		});
 		
