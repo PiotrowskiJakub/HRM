@@ -71,7 +71,16 @@ public class AdminDaoImpl implements AdminDao
 	public void deleteProject(String name) 
 	{
 		Project project = (Project) sf.getCurrentSession().createCriteria(Project.class).add(Restrictions.eq("prjName", name)).uniqueResult();
+		if(project == null)
+			return;
+		for(Task t : project.getTasks())
+			sf.getCurrentSession().delete(t);
 		sf.getCurrentSession().delete(project);
+	}
+	
+	public void editProject(Project project) 
+	{
+		sf.getCurrentSession().update(project);
 	}
 	
 	public void addUser(User user)

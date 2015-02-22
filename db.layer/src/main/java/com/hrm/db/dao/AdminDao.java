@@ -20,6 +20,7 @@ public interface AdminDao
 	Section getSectionByName(String name);
 	void addProject(Project project);
 	void deleteProject(String name);
+	void editProject(Project project);
 	void addUser(User user);
 	void deleteUser(String login);
 	User getUser(String login);

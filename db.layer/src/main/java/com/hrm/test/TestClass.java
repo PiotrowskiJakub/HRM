@@ -5,7 +5,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.hrm.db.conf.impl.DefaultSpringAppConfiguration;
 import com.hrm.db.dao.AdminDao;
-import com.hrm.db.model.Project;
 
 /**
  * 
@@ -23,7 +22,6 @@ public class TestClass {
 	public static void main(String[] args)
 	{
 		AdminDao adminDao = getBean(AdminDao.class);
-		for(Project s : adminDao.getProjects())
-			System.out.println(s.getPrjCode());
+		adminDao.deleteProject("Delete_test");
 	}
 }
