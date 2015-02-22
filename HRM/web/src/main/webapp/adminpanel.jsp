@@ -44,7 +44,7 @@
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
 						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
-						<li><a href="#">Sprawdz wpisy uzytkownika</a></li>
+						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
 				<li><a href="#">Zarzadzaj projektami</a></li>
 			</ul>

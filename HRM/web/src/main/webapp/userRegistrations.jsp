@@ -1,13 +1,16 @@
+<%@page import="com.hrm.admin.ActivityManagement"%>
 <%@ page import="java.util.*"%>
-<%@page import="com.hrm.db.model.Section, com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User, com.hrm.db.model.Role"%>
+<%@page import="com.hrm.db.model.Section, com.hrm.admin.UserManagement, com.hrm.admin.UserRegistration, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User, com.hrm.db.model.Role"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Formularz dodawania uzytkownika</title>
+<title>Wpisy wybranego uzytkownika</title>
 <link href="editUserForm.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
@@ -43,7 +46,7 @@
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
 						<li><a href="#">Dodaj uzytkownika</a></li>
-						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
+						<li><a href="#">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
 				<li><a href="#">Zarzadzaj projektami</a></li>
 			</ul>
@@ -53,60 +56,55 @@
 </div>
 <!-- end header -->
 
+
+
 <!-- start page -->
 <div id="page">
 	<!-- start content -->
 	<div id="content">
-		<div class="editForm">
-			<h1>Nowy uzytkownik</h1>
-			<form id="formCheck" action="addUser.jsp" method="POST">
-			<table>
-				<tr>
-					<td>Login: </td> <td><input type="text" name="loginName"></td>
-				</tr>
-				<tr>
-					<td>Imie: </td> <td> <input type="text" name="name"></td>
-				</tr>
-				<tr>
-					<td>Nazwisko: </td> <td> <input type="text" name="surname"/></td>
-				</tr>
-				<tr>
-					<td>E-mail: </td> <td> <input type="text" name="email"/></td>
-				</tr>
-				<tr>
-					<td>Pracuje jako:</td><td><input type=text name="role" list=roles><datalist id=roles>
+	
+	<form id="formCheck" action="addUser.jsp" method="POST">
+	<table>
+	<tr>
+	<td>Pracownik:</td><td><input type=text name="boss" value="Wybierz pracownika" list=bosses><datalist id=bosses>
 					<%
 					UserManagement userManagement = new UserManagement();
-				 	List<Role> roles = userManagement.getAllRoles();
-				 	for(Role role : roles) {
-				 	%>
-						<option value="<%=role.getRolName()%>">
-					<% } %></datalist></td>
-				</tr>
-				<tr>
-					<td>Dzial:</td><td><input type=text name="section" list=sections><datalist id=sections>
-					<%
-				 	List<Section> sections = userManagement.getAllSection();
-				 	for(Section section : sections) {
-				 	%>
-						<option value="<%=section.getSecName()%>">
-					<% } %></datalist></td>
-				</tr>
-				<tr>
-					<td>Przelozony:</td><td><input type=text name="boss" value="Brak" list=bosses><datalist id=bosses>
-					<%
 				 	List<User> bosses = userManagement.getAllUsers();
 				 	for(User boss : bosses) {
 				 	%>
 						<option value="<%=boss.getUsrLogin()%>">
-					<% } %></datalist></td>
+					<% } %></datalist>
+					</td>
 				</tr>
-				<tr>
-					<td colspan="2" style="text-align:right;"><input type="submit" value="Zapisz" /></td>
-				</tr>
-			</table>
+	</table>
 			</form>
-		</div>
+	<br />
+	<br />
+		
+	<%
+	  String registrationTitle;
+	  String registrationContent;
+	  boolean isWorklog;
+	  ActivityManagement activityManagemenent = new ActivityManagement();
+	  List<UserRegistration> registrations = activityManagemenent.getAllUserRegistrations("kuba");
+	  System.out.println(registrations.size());
+	  for(UserRegistration registr : registrations){
+		  registrationTitle = registr.getRegistrationTitle();
+		  registrationContent = registr.getContent();%>
+		  
+		<c:set var="registrationTitle" value="<%= registrationTitle %>" />
+		<c:set var="registrationContent" value="<%= registrationContent %>" />
+
+		<t:registration>
+		<jsp:attribute name="registrationTitle">
+			${registrationTitle}
+		</jsp:attribute>
+		<jsp:attribute name="registrationContent">
+			${registrationContent}
+		</jsp:attribute>
+		</t:registration>
+		<br></br>
+	<% } %>	
 	</div>
 	<!-- end content -->
 
