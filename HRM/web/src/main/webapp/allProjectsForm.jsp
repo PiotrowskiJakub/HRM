@@ -17,7 +17,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Panel administratora</title>
-<link href="allProjects.css" rel="stylesheet" type="text/css" />
+<link href="pm.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="JS/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
@@ -73,15 +73,19 @@
 <div id="page">
 	<!-- start content -->
 	<div id="content">
-				<table title="users">
+		<div class="post">
+			<div class="entry">
+				<table>
+				<thead>
 				  <tr>
 				    <th>Nazwa Projektu</th>
 				    <th>Opis </th>  
 				    <th>Status</th>
 				    <th></th>
 				    <th></th>
-				    
 				  </tr>
+				</thead>
+				<body>
 				  <%
 				  	ProjectManagement projectManagement = new ProjectManagement();
 				 	List<Project> projects = projectManagement.getAllProjects();
@@ -100,7 +104,10 @@
 					    <td><form id="formCheck" action="deleteProject.jsp" method="POST"><input type="hidden" name="projectName" value="<%=proj.getPrjName() %>"><input type="submit" name="submit" value="Usun" /></form></td>
 					  </tr>
 					<% } %>
+				</body>	
 				</table>
+			</div>
+		</div>
 	</div>
 	<p id="demo"></p>
 	<!-- start sidebar 
@@ -131,36 +138,6 @@
 	end sidebar -->
 	<div style="clear: both;">&nbsp;</div>
  </div>
- 
- <!-- start footer -->
-<div id="footer">
-	<div class="wrap">
-		<div id="fbox1" class="box2">
-			<h2><b>PRODUCTS</b></h2>
-			<p><a href="#">HRM</a></p>
-			<p><a href="#">HRM Service Desk</a></p>
-			<p><a href="#">Data Center</a></p>
-			<p><a href="#">Marketplace</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>RESOURCES</b></h2>
-			<p><a href="#">Help</a></p>
-			<p><a href="#">Premier Support</a></p>
-			<p><a href="#">Purchasing FAQ</a></p>
-			<p><a href="#">Documentation</a></p>
-			<p><a href="#">Downloads</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>COMPANY</b></h2>
-			<p><a href="#">Overview</a></p>
-			<p><a href="#">About us</a></p>
-			<p><a href="#">Contact</a></p>
-		</div>
-	</div>
-</div>
-<!-- end footer -->
-
-
-
+ <div id="footer"></div>
 </body>
 </html>
