@@ -3,6 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%
+	String userId = "";
+	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+		response.sendRedirect("index.jsp?login=false");	
+	} else {
+		userId = (String) session.getAttribute("userid");
+	}
+%>
+    
 <jsp:useBean id="formHandler" class="com.hrm.admin.UserManagement" scope="request">
 <jsp:setProperty name="formHandler" property="*" />
 </jsp:useBean>
@@ -44,27 +53,17 @@
 	<div id="menu">
 			<ul>
 				<li><a href="#">Strona Startowa</a></li>
-				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Zarz&#261;dzaj</a>
+				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
-						<li><a href="#">Drupal</a></li>
-						<li><a href="#">WordPress</a></li>
-						<li><a href="#">Concrete 3</a></li>
-						<li><a href="#">Concrete 4</a></li>
-						<li><a href="#">Concrete 5</a></li>
-						<li><a href="#">Concrete 6</a></li>
-						<li><a href="#">Concrete 7</a></li>
-						<li><a href="#">Concrete 8</a></li>
-						<li><a href="#">Concrete 9</a></li>
-						<li><a href="#">Concrete 10</a></li>
-						<li><a href="#">Concrete 11</a></li>
-						<li><a href="#">Concrete 12</a></li>
-						<li><a href="#">Concrete 13</a></li>
+						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
+						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
-					<li><a href="#">Moje Projekty</a></li>
+				<li><a href="#">Zarzadzaj projektami</a></li>
+				<li><a href="logout.jsp">Wyloguj</a></li>
 			</ul>
 
 			
-		</div>
+	</div>
 </div>
 <!-- end header -->
 
@@ -95,7 +94,7 @@
 				 	List<Role> roles = userManagement.getAllRoles();
 				 	for(Role role : roles) {
 				 	%>
-				 	if(formHandler.getEmai)
+				 	if(formHandler.getEmail())
 						<option value="<%=role.getRolName()%>">
 					<% } %></datalist></td>
 				</tr>

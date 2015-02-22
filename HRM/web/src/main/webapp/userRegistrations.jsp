@@ -6,6 +6,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
+<%
+	String userId = "";
+	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+		response.sendRedirect("index.jsp?login=false");	
+	} else {
+		userId = (String) session.getAttribute("userid");
+	}
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,17 +55,17 @@
 				<li><a href="#">Strona Startowa</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
-						<li><a href="#">Dodaj uzytkownika</a></li>
-						<li><a href="#">Sprawdz wpisy uzytkownika</a></li>
+						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
+						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
 				<li><a href="#">Zarzadzaj projektami</a></li>
+				<li><a href="logout.jsp">Wyloguj</a></li>
 			</ul>
 
 			
-		</div>
+	</div>
 </div>
 <!-- end header -->
-
 
 
 <!-- start page -->
@@ -63,21 +73,22 @@
 	<!-- start content -->
 	<div id="content">
 	
-	<form id="formCheck" action="addUser.jsp" method="POST">
-	<table>
-	<tr>
-	<td>Pracownik:</td><td><input type=text name="boss" value="Wybierz pracownika" list=bosses><datalist id=bosses>
+	<form id="formCheck" action="userRegistrations.jsp" method="POST">
+		<table>
+			<tr>
+				<td>Pracownik: </td>
+				<td><input type=text name="user" value="Wybierz pracownika" list=users><datalist id=users>
 					<%
 					UserManagement userManagement = new UserManagement();
-				 	List<User> bosses = userManagement.getAllUsers();
-				 	for(User boss : bosses) {
-				 	%>
-						<option value="<%=boss.getUsrLogin()%>">
+					List<User> users = userManagement.getAllUsers();
+					for(User usr : users) {
+					%>
+					<option value="<%=usr.getUsrLogin()%>">
 					<% } %></datalist>
-					</td>
-				</tr>
-	</table>
-			</form>
+				</td>
+			</tr>
+		</table>
+	</form>
 	<br />
 	<br />
 		

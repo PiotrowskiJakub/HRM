@@ -2,6 +2,16 @@
 <%@page import="com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%
+	String userId = "";
+	if (session.getAttribute("userid") == null || ((String)session.getAttribute("userid")).equals("")) {
+		response.sendRedirect("index.jsp?login=false");	
+	} else {
+		userId = (String) session.getAttribute("userid");
+	}
+%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,10 +57,11 @@
 						<li><a href="userRegistrations.jsp">Sprawdz wpisy uzytkownika</a></li>
 					</ul></li>
 				<li><a href="#">Zarzadzaj projektami</a></li>
+				<li><a href="logout.jsp">Wyloguj</a></li>
 			</ul>
 
 			
-		</div>
+	</div>
 </div>
 <!-- end header -->
 
