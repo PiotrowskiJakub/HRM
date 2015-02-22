@@ -1,5 +1,5 @@
 <%@page import="com.hrm.db.dao.impl.AdminDaoImpl"%>
-<%@page import="com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.User"%>
+<%@page import="com.hrm.admin.ProjectManagement, java.util.List, com.hrm.db.dao.AdminDao, com.hrm.db.model.Project"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -50,7 +50,7 @@
 	</div>
 	<div id="menu">
 			<ul>
-				<li><a href="#">Strona Startowa</a></li>
+				<li><a href="adminpanel.jsp">Strona Startowa</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
 						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
@@ -83,26 +83,21 @@
 				    
 				  </tr>
 				  <%
-					UserManagement userManagement = new UserManagement();
-				 	List<User> users = userManagement.getAllUsers();
-				 	String boss;
-				 	for(User usr : users) {
-				 		if(usr.getUser() != null){
-				 			boss = usr.getUser().getUsrName() + " " + usr.getUser().getUsrSurname();
-				 		} else{
-				 			boss = "Prezes";
-				 		}
+				  	ProjectManagement projectManagement = new ProjectManagement();
+				 	List<Project> projects = projectManagement.getAllProjects();
+				 	for(Project proj : projects) {
+				 		
 				 	%>
 					  <tr>
-					    <td><%=usr.getUsrLogin() %></td>
-					    <td>lorem ipsumsad asdsadjknjdjk jsahd asd adsdasas a ads  asd sad dsa sd a sad das dassad</td> 
-					    <%if(usr.isUsrActive()){%>
-					    	<td><form id="formCheck" action="changeUserStatus.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Aktywne" /></form></td>
+					    <td><%=proj.getPrjName() %></td>
+					    <td><%=proj.getPrjDescription() %></td> 
+					    <%if(proj.getPrjFinished()){%>
+					    	<td><form id="formCheck" action="changeProjectStatus.jsp" method="POST"><input type="hidden" name="projectName" value="<%=proj.getPrjName() %>"><input type="submit" name="submit" value="Zakonczone" /></form></td>
 					   	<%}else{ %>
-					   		<td><form id="formCheck" action="changeUserStatus.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Nieaktywne" /></form></td>
+					   		<td><form id="formCheck" action="changeProjectStatus.jsp" method="POST"><input type="hidden" name="projectName" value="<%=proj.getPrjName() %>"><input type="submit" name="submit" value="Trwa" /></form></td>
 					    <% } %>
-					    <td><form id="formCheck" action="editUserForm.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Edytuj" /></form></td>
-					    <td><form id="formCheck" action="deleteUser.jsp" method="POST"><input type="hidden" name="loginName" value="<%=usr.getUsrLogin() %>"><input type="submit" name="submit" value="Usun" /></form></td>
+					    <td><form id="formCheck" action="editProjectForm.jsp" method="POST"><input type="hidden" name="projectName" value="<%=proj.getPrjName() %>"><input type="submit" name="submit" value="Edytuj" /></form></td>
+					    <td><form id="formCheck" action="deleteProject.jsp" method="POST"><input type="hidden" name="projectName" value="<%=proj.getPrjName() %>"><input type="submit" name="submit" value="Usun" /></form></td>
 					  </tr>
 					<% } %>
 				</table>

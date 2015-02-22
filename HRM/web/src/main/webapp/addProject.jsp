@@ -8,6 +8,6 @@
 </jsp:useBean>
 
 <%
-//formHandler.addProject();
+formHandler.addProject();
 response.sendRedirect("allProjectsForm.jsp");
 %>

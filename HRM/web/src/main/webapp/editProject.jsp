@@ -8,6 +8,6 @@
 </jsp:useBean>
 
 <%
-formHandler.deleteProject();
+formHandler.editProject();
 response.sendRedirect("allProjectsForm.jsp");
 %>

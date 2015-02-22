@@ -50,7 +50,7 @@
 	</div>
 	<div id="menu">
 			<ul>
-				<li><a href="#">Strona Startowa</a></li>
+				<li><a href="adminpanel.jsp">Strona Startowa</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
 						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>

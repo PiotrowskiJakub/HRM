@@ -49,7 +49,7 @@
 	</div>
 	<div id="menu">
 			<ul>
-				<li><a href="#">Strona Startowa</a></li>
+				<li><a href="adminpanel.jsp">Strona Startowa</a></li>
 				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Uzytkownicy</a>
 					<ul>
 						<li><a href="addUserForm.jsp">Dodaj uzytkownika</a></li>
@@ -75,7 +75,7 @@
 	<div id="content">
 		<div class="editForm">
 			<h1>Nowy projekt</h1>
-			<form id="formCheck" action="addUser.jsp" method="POST">
+			<form id="formCheck" action="addProject.jsp" method="POST">
 			<table>
 				<tr>
 					<td>Nazwa Projektu: </td> <td><input type="text" name="projectName"></td>
