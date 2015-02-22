@@ -45,6 +45,7 @@ public class TaskManagement {
 		
 		Task task = new Task(user, leader, name, date, Integer.valueOf(time), Boolean.valueOf(status));
 		task.setProject(project);
+		pmDao.addTask(task);
 		
 		return true;
 	}
