@@ -142,7 +142,7 @@ private String getTimeOutput(double tskTime) {
 							<li><%= reporter.getUsrLogin() %></li>
 
 							<li><font face="Impact">Wykonuje:</font></li>
-							<li><%= assignee.getUsrLogin() %></li>
+							<li><%= assignee.getUsrName()+" "+assignee.getUsrSurname() %></li>
 						</ul>
 						<ul id="limheight" style="list-style-type: none">
 							<li><font face="Impact">Data utworzenia:</font></li>

@@ -98,7 +98,7 @@
 		<div class="post">
 			<div class="entry">
 				<h2 style="color:green">
-					HRM &mdash; Human Resource Management
+					Twoi pracownicy:
 				</h2><br><br>
 				<p>
 					<table>
