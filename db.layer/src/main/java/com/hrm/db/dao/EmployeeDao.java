@@ -22,6 +22,7 @@ public interface EmployeeDao
 	Set<Comment> getUserComments(String login);
 	Set<Leave> getUserLeaves(String login);
 	Set<WorkLog> getUserWorkLogs(String login);
+	Set<WorkLog> getUserWorkLogsById(Integer id);
 	Set<Comment> getTaskComments(Integer id);
 	List<UserLog> getAllUserLogs();
 	String getActionDoneName(Integer id);

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.EmployeeDao;
 import com.hrm.db.model.Comment;
 import com.hrm.db.model.Task;
@@ -18,7 +18,7 @@ public class EmployeeManager {
 	private User user;
 	
 	public EmployeeManager(String loginName){
-		employeeDao = DaoInitializer.getDao(EmployeeDao.class);
+		employeeDao = DAOFactory.getEmployeeDAO();
 		this.loginName = loginName;
 		user = employeeDao.getUser(loginName);		
 	}

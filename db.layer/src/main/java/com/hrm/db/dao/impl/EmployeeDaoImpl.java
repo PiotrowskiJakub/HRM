@@ -82,6 +82,14 @@ public class EmployeeDaoImpl implements EmployeeDao
 		return getUser(login).getWorkLogs();
 	}
 	
+	public Set<WorkLog> getUserWorkLogsById(Integer id) 
+	{
+	    User usr = (User) sf.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("usrId", id)).uniqueResult();
+	    if(usr == null)
+		return null;
+	    return usr.getWorkLogs();
+	}
+	
 	public Set<Comment> getTaskComments(Integer id)
 	{
 		return getTask(id).getComments();

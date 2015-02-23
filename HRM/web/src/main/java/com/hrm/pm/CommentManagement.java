@@ -2,7 +2,7 @@ package com.hrm.pm;
 
 import java.util.Date;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Comment;
 
@@ -16,7 +16,7 @@ public class CommentManagement {
 	private String comdate;
 	
 	public void addComment() {
-		pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
+		pmDao = DAOFactory.getProjectManagerDAO();
 		Comment com = new Comment();
 		com.setComComment(comcomment);
 		com.setComDate(new Date());

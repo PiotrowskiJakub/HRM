@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Set;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Comment;
 import com.hrm.db.model.Task;
@@ -15,7 +15,7 @@ public class ActivityManagement {
 	private ProjectManagerDao projectManagerDao;
 	
 	public ActivityManagement(){
-		projectManagerDao = DaoInitializer.getDao(ProjectManagerDao.class);
+		projectManagerDao = DAOFactory.getProjectManagerDAO();
 	}
 	
 	public LinkedList<UserRegistration> getAllUserRegistrations(String login){

@@ -2,7 +2,7 @@ package com.hrm.login;
 
 import java.util.Hashtable;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.EmployeeDao;
 
 public class CheckLogin {
@@ -12,7 +12,7 @@ public class CheckLogin {
 	private Hashtable<String,String> errors;
 
 	public CheckLogin() {
-		employeeDao = DaoInitializer.getDao(EmployeeDao.class);
+		employeeDao = DAOFactory.getEmployeeDAO();
 		loginName = "";
 		password = "";
 		errors = new Hashtable<String,String>();

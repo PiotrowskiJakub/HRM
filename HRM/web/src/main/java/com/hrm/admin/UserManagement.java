@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.AdminDao;
 import com.hrm.db.model.Role;
 import com.hrm.db.model.Section;
@@ -23,7 +23,7 @@ public class UserManagement {
 	
 	
 	public UserManagement(){
-		adminDao = DaoInitializer.getDao(AdminDao.class);
+		adminDao = DAOFactory.getAdminDAO();
 		loginName = "";
 		name = "";
 		surname = "";

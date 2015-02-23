@@ -2,7 +2,7 @@ package com.hrm.pm;
 
 import java.util.Date;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Project;
 import com.hrm.db.model.Task;
@@ -23,7 +23,7 @@ public class TaskManagement {
 	private String projectid;
 	
 	public boolean addTask () {
-		pmDao = DaoInitializer.getDao(ProjectManagerDao.class);	
+		pmDao = DAOFactory.getProjectManagerDAO();	
 		String prio = "";
 		
 		if(assignee == null || priority == null || status == null || time == null ||
@@ -51,7 +51,7 @@ public class TaskManagement {
 	}
 	
 	public boolean editTask() {
-		pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
+		pmDao = DAOFactory.getProjectManagerDAO();
 		Task task = pmDao.getTask(taskid);
 		String prio = "";
 

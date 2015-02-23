@@ -1,16 +1,10 @@
 package com.hrm.admin;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.AdminDao;
 import com.hrm.db.model.Project;
-import com.hrm.db.model.Role;
-import com.hrm.db.model.Section;
-import com.hrm.db.model.User;
 
 public class ProjectManagement {
 	private AdminDao adminDao;
@@ -18,7 +12,7 @@ public class ProjectManagement {
 	private String description;
 
 	public ProjectManagement(){
-		adminDao = DaoInitializer.getDao(AdminDao.class);
+		adminDao = DAOFactory.getAdminDAO();
 		projectName = "";
 		description = "";
 	}

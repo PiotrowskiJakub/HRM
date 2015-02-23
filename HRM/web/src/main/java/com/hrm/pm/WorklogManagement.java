@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.hrm.DaoInitializer;
+import com.hrm.DAOFactory;
 import com.hrm.db.dao.ProjectManagerDao;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
@@ -21,7 +21,7 @@ public class WorklogManagement {
 	
 	public boolean addWorklog() {
 
-		pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
+		pmDao = DAOFactory.getProjectManagerDAO();
 		Task task = pmDao.getTask(wloTask);
 		User user = pmDao.getUser(wloUser);
 		Date date;
