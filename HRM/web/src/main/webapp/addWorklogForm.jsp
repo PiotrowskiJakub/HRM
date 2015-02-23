@@ -147,7 +147,7 @@ private String getTimeOutput(double tskTime) {
 						<table>
 							<tr>
 								<td>U&#380;ytkownik:</td>
-								<td><input type="hidden" name="wloUser" value=<%= userId %>><%= userId %></input></td>
+								<td><%= userId %><input type="hidden" name="wloUser" value=<%= userId %>/></input></td>
 							</tr>
 							<tr>
 								<td>Zadanie:</td>

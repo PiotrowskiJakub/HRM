@@ -16,6 +16,7 @@
 commentHandler.createEmployeeManager();
 commentHandler.createComment();
 System.out.println((String)request.getParameter("commentValue"));
+
 Singelton.getInstance().dataChanged(commentHandler.getUser(), ActionDone.addComment);
 //response.setStatus(200);
 // response.getWriter().write("true");

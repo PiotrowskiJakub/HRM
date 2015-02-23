@@ -91,7 +91,6 @@
 
 
 ObserverManager observerInstance = Singelton.getInstance();
-ObserverUser observer = new ObserverUser(observerInstance,pageContext,response,request);
 
 String userId;
 EmployeeManager employeeManager = null;
@@ -111,6 +110,8 @@ if(employeeManager == null){
 	<%
 	}
 
+ObserverUser observer = new ObserverUser(observerInstance,employeeManager.getUser()); 
+
 
 %>
 
@@ -128,14 +129,10 @@ if(employeeManager == null){
 	</div>
 	<div id="menu">
 			<ul>
-				<li><a href="#">Strona Startowa</a></li>
-				<li onmouseover="lowOpacity()" onmouseout="normalOpacity()"><a href="#">Zarz&#261;dzaj</a>
-					<ul>
-						<li><a href="#">Drupal</a></li>
-						<li><a href="#">WordPress</a></li>
-						<li><a href="#">Concrete 3</a></li>
-					</ul></li>
-					<li><a href="#">Moje Projekty</a></li>
+				<li><a href="index.jsp">Strona Startowa</a></li>
+				<li><a href="workLogsUser.jsp">Work logs. </a></li>
+				<li><a href="showLogs.jsp">Wszystkie Logs</a></li>
+				<li><a href="logout.jsp">Wyloguj się</a></li>
 			</ul>
 
 			
@@ -172,7 +169,7 @@ if(employeeManager == null){
    					String dataString = dataTask.getDay() + "/" + (dataTask.getMonth()+1) + "/" + (dataTask.getYear()+ 1900) + " " + dataTask.getHours() + ":" + dataTask.getMinutes();
    					out.println(dataTask);
    					%></div>
-   					<div class="main_task_description_desc"><%=currentTask.getNazwa() %></div>
+   					<div class="main_task_description_desc"><a href="addWorkLogUserForm.jsp?idtask=<%=currentTask.getTskId()%>" title="addWorkLog"><%=currentTask.getNazwa() %></a></div>
    					<div class="main_task_description"><%=currentTask.getTskDescription() %></div>
    				</div>
    				<div class="main_task_icon">
@@ -329,27 +326,7 @@ if(employeeManager == null){
  <!-- start footer -->
 <div id="footer">
 	<div class="wrap">
-		<div id="fbox1" class="box2">
-			<h2><b>PRODUCTS</b></h2>
-			<p><a href="#">HRM</a></p>
-			<p><a href="#">HRM Service Desk</a></p>
-			<p><a href="#">Data Center</a></p>
-			<p><a href="#">Marketplace</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>RESOURCES</b></h2>
-			<p><a href="#">Help</a></p>
-			<p><a href="#">Premier Support</a></p>
-			<p><a href="#">Purchasing FAQ</a></p>
-			<p><a href="#">Documentation</a></p>
-			<p><a href="#">Downloads</a></p>
-		</div>
-		<div id="fbox2" class="box2">
-			<h2><b>COMPANY</b></h2>
-			<p><a href="#">Overview</a></p>
-			<p><a href="#">About us</a></p>
-			<p><a href="#">Contact</a></p>
-		</div>
+		
 	</div>
 </div>
 <!-- end footer -->

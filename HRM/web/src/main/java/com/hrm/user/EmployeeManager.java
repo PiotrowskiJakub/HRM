@@ -3,14 +3,19 @@ package com.hrm.user;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.hrm.DAOFactory;
+
 import com.hrm.db.dao.EmployeeDao;
 import com.hrm.db.model.Comment;
 import com.hrm.db.model.Task;
 import com.hrm.db.model.User;
+import com.hrm.db.model.UserLog;
+import com.hrm.db.model.WorkLog;
+import com.hrm.observer.ActionDone;
 
 public class EmployeeManager {
 	private EmployeeDao employeeDao;
@@ -20,7 +25,8 @@ public class EmployeeManager {
 	public EmployeeManager(String loginName){
 		employeeDao = DAOFactory.getEmployeeDAO();
 		this.loginName = loginName;
-		user = employeeDao.getUser(loginName);		
+		user = employeeDao.getUser(loginName);
+		
 	}
 	
 	public User getUser(){
@@ -57,6 +63,10 @@ public class EmployeeManager {
 		employeeDao.addTaskComment(idTask, comment);
 	}
 	
+	public Task getCurrentTask(Integer id){
+		return employeeDao.getTask(id);
+	}
+	
 	public Set<Map.Entry<String,Integer[]>> getAllTitlesTask(){
 		HashMap<String, Integer[]> tmp = new HashMap<String, Integer[]>();
 		Date now = new Date();
@@ -68,6 +78,26 @@ public class EmployeeManager {
 			tmp.put(currentTask.getNazwa(),tmpInt);
 		}
 		return tmp.entrySet();
+	}
+	
+	public void addWorkLogs(String taskId, String comment, String hours, String minutes){
+		double minutesDouble = Double.parseDouble(hours)*60.0 + Double.parseDouble(minutes); 
+		WorkLog workLog = new WorkLog(employeeDao.getTask(Integer.parseInt(taskId)), user, comment, new Date(), minutesDouble);
+		employeeDao.addUserWorkLog(user.getUsrLogin(), workLog);
+	}
+	
+	public void addLog(ActionDone actionDone, User userWhoAdd, User userWhoViewd){
+		System.out.println("action: " + actionDone.ordinal());
+		System.out.println(employeeDao.getActionDone(actionDone.ordinal()).getAdoName());
+		UserLog userLog = new UserLog(employeeDao.getActionDone(actionDone.ordinal()), userWhoAdd, userWhoViewd, new Date());
+		employeeDao.addUserLog(userLog);
+	}
+	
+	public List<UserLog> getAllUserLogs(){
+		return employeeDao.getAllUserLogs();
+	}
+	public Set<WorkLog> getAllWorkLogs(){
+		return employeeDao.getUserWorkLogs(user.getUsrLogin());
 	}
 	
 	public String getTimeString(int minutes){
@@ -106,14 +136,4 @@ public class EmployeeManager {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
