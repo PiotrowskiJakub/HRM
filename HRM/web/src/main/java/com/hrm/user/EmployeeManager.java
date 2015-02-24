@@ -87,8 +87,6 @@ public class EmployeeManager {
 	}
 	
 	public void addLog(ActionDone actionDone, User userWhoAdd, User userWhoViewd){
-		System.out.println("action: " + actionDone.ordinal());
-		System.out.println(employeeDao.getActionDone(actionDone.ordinal()).getAdoName());
 		UserLog userLog = new UserLog(employeeDao.getActionDone(actionDone.ordinal()), userWhoAdd, userWhoViewd, new Date());
 		employeeDao.addUserLog(userLog);
 	}
