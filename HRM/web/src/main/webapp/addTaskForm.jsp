@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
+<%@page import="com.hrm.DAOFactory"%>
 <%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project,
 com.hrm.db.model.Task, com.hrm.db.model.Comment, com.hrm.db.model.TaskPriority, com.hrm.db.model.WorkLog,
-com.hrm.db.model.User,com.hrm.DaoInitializer, com.hrm.db.dao.ProjectManagerDao;"%>
+com.hrm.db.model.User,com.hrm.DAOFactory, com.hrm.db.dao.ProjectManagerDao;"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
@@ -111,7 +112,7 @@ com.hrm.db.model.User,com.hrm.DaoInitializer, com.hrm.db.dao.ProjectManagerDao;"
 								<td>Wykonuje:</td><td>
 								<select name="assignee" form="formCheck">
 								<%
-									ProjectManagerDao pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
+									ProjectManagerDao pmDao = DAOFactory.getProjectManagerDAO();
 									User user = pmDao.getUser(userId);
 									%><option value=<%= user.getUsrLogin() %>><%= user.getUsrName()+" "+user.getUsrSurname() %></option> <%
 									Set<User> users = pmDao.getUser(user.getUsrLogin()).getUsers();
