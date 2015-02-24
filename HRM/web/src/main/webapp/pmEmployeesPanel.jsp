@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
+<%@page import="com.hrm.DAOFactory"%>
 <%@ page import="java.io.*,java.text.*,java.util.*,com.hrm.pm.UserProjectsManagement,com.hrm.db.model.Project,
  com.hrm.admin.UserManagement, java.util.List, com.hrm.db.dao.AdminDao, 
- com.hrm.db.model.User, com.hrm.db.dao.ProjectManagerDao, com.hrm.DaoInitializer" %>
+ com.hrm.db.model.User, com.hrm.db.dao.ProjectManagerDao, com.hrm.DAOFactory" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -110,7 +111,7 @@
 					</thead>
 					<tbody>
 					<%
-						ProjectManagerDao pmDao = DaoInitializer.getDao(ProjectManagerDao.class);
+						ProjectManagerDao pmDao = DAOFactory.getProjectManagerDAO();
 						User user = pmDao.getUser(userId);
 						Set<User> users = user.getUsers();
 						for(User u : users) {
