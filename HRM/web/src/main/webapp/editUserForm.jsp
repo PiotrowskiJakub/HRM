@@ -135,14 +135,6 @@
 <!-- end page -->
 <!-- start footer -->
 <div id="footer">
-	<div class="wrap">
-		<div id="fbox1" class="box2">
-			<h2><b>COMPANY</b></h2>
-			<p><a href="#">Overview</a></p>
-			<p><a href="#">About us</a></p>
-			<p><a href="#">Contact</a></p>
-		</div>
-	</div>
 </div>
 <!-- end footer -->
 

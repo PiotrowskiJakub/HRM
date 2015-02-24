@@ -5,7 +5,7 @@ import java.util.Date;
 import com.hrm.db.model.Comment;
 
 public class CommentAdapter implements UserRegistration {
-	Comment ref;
+	private Comment ref;
 	
 	public CommentAdapter(Comment ref){
 		this.ref = ref;

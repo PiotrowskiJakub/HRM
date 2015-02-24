@@ -5,7 +5,7 @@ import java.util.Date;
 import com.hrm.db.model.WorkLog;
 
 public class WorkLogAdapter implements UserRegistration {
-	WorkLog ref;
+	private WorkLog ref;
 	
 	public WorkLogAdapter(WorkLog ref){
 		this.ref = ref;
