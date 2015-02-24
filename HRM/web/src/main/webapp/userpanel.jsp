@@ -195,9 +195,9 @@ ObserverUser observer = new ObserverUser(observerInstance,employeeManager.getUse
    						<% 
    						int last = 0;
    						for (Comment currentComment : comments){
-   							System.out.println("last: " + last );
+   							
    							if(last == comments.size() - 1 ){
-   								System.out.println("system last");
+   							
    						%>
    						
    						
