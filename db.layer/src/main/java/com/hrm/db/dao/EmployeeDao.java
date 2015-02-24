@@ -3,6 +3,7 @@ package com.hrm.db.dao;
 import java.util.List;
 import java.util.Set;
 
+import com.hrm.db.model.ActionDone;
 import com.hrm.db.model.Comment;
 import com.hrm.db.model.Leave;
 import com.hrm.db.model.Role;
@@ -26,6 +27,7 @@ public interface EmployeeDao
 	Set<Comment> getTaskComments(Integer id);
 	List<UserLog> getAllUserLogs();
 	String getActionDoneName(Integer id);
+	ActionDone getActionDone(Integer id);
 	void addUserLog(UserLog userLog);
 	void addUserLeave(String login, Leave leave);
 	void addUserWorkLog(String login, WorkLog workLog);

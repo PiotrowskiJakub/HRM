@@ -109,6 +109,13 @@ public class EmployeeDaoImpl implements EmployeeDao
 			return null;
 		return ad.getAdoName();
 	}
+	public ActionDone getActionDone(Integer id){
+		ActionDone ad = (ActionDone) sf.getCurrentSession().createCriteria(ActionDone.class).add(Restrictions.eq("adoId", id)).uniqueResult();
+		if(ad == null)
+			return null;
+		return ad;
+	}
+	
 	
 	public void addUserLog(UserLog userLog)
 	{
